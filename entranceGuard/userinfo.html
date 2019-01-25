@@ -153,6 +153,10 @@
             text-align: center;
             color: #fff;
         }
+
+        #wrap .carBox {
+            display:none;
+        }
         #wrap .active {
             display:block;
         }
@@ -167,79 +171,79 @@
 <body style="">
 
 <div id="userinfo">
-    <div class="infoBox flexBetween">
-        <div class="inputLeft">
-            <span class="lableTextIcon">*</span>
-            <span class="lableText">受访单位 :</span>
-        </div>
-        <select class="selectBox" id="company">
-            <option value="">请选择受访单位</option>
-        </select>
-    </div>
-    <div class="infoBox flexBetween">
-        <div class="inputLeft">
-            <span class="lableTextIcon">*</span>
-            <span class="lableText">受访单位部门 :</span>
-        </div>
-        <select class="selectBox" id="department">
-            <option value="">请选择受访部门</option>
-        </select>
-    </div>
-    <div class="infoBox flexBetween">
-        <div class="inputLeft">
-            <span class="lableTextIcon">*</span>
-            <span class="lableText">受访人 :</span>
-        </div>
-        <div class="listName">
-            <input class='inputText' style="width: 100%;"  type="text" id="shoufangperson" placeholder="请输入受访人姓名(全名)" @blur="checkRespondent"/>
-            <div class="ulList" style="display: none;">
-                <ul class="enquiries-ul">
-                </ul>
-            </div>
-        </div>
-    </div>
-    <div class="infoBox flexBetween">
-        <div class="inputLeft">
-            <span class="lableTextIcon">*</span>
-            <span class="lableText">申请人单位 :</span>
-        </div>
-        <input class='inputText' type="text" id="applicantCompaney" placeholder="请输入申请人单位"/>
-    </div>
-    <div class="infoBox flexBetween">
-        <div class="inputLeft">
-            <span class="lableTextIcon">*</span>
-            <span class="lableText">申请人姓名 :</span>
-        </div>
-        <input class='inputText' type="text" id='applicant'  placeholder="请输入申请人姓名"/>
-    </div>
-    <div class="infoBox flexBetween">
-        <div class="inputLeft">
-            <span class="lableTextIcon">*</span>
-            <span class="lableText">身份证号 :</span>
-        </div>
-        <input class='inputText' type="text" id='idCard'  placeholder="请输入身份证号"/>
-    </div>
-    <div class="infoBox flexBetween">
-        <div class="inputLeft">
-            <span class="lableTextIcon">*</span>
-            <span class="lableText">到访事由 :</span>
-        </div>
-        <input class='inputText' type="text" v-model="userinfo.reason" placeholder="请输入到访事由"/>
-    </div>
-    <div class="infoBox flexBetween">
-        <div class="inputLeft">
-            <span class="lableTextIcon">*</span>
-            <span class="lableText">到访时间:</span>
-        </div>
-        <input type="text" class="inputText" name="start_date" id="start_date" placeholder="请选择到访时间" readonly="readonly" />
-    </div>
-    <div class="infoBox flexBetween">
-        <div class="inputLeft">
-            <span class="lableTextIcon">*</span>
-            <span class="lableText">结束时间 :</span>
-        </div>
-        <input type="text" class='inputText' name="end_date" id="end_date" placeholder="请选择结束时间" readonly="readonly" />
-    </div>
+    <!--<div class="infoBox flexBetween">-->
+        <!--<div class="inputLeft">-->
+            <!--<span class="lableTextIcon">*</span>-->
+            <!--<span class="lableText">受访单位 :</span>-->
+        <!--</div>-->
+        <!--<select class="selectBox" id="company">-->
+            <!--<option value="">请选择受访单位</option>-->
+        <!--</select>-->
+    <!--</div>-->
+    <!--<div class="infoBox flexBetween">-->
+        <!--<div class="inputLeft">-->
+            <!--<span class="lableTextIcon">*</span>-->
+            <!--<span class="lableText">受访单位部门 :</span>-->
+        <!--</div>-->
+        <!--<select class="selectBox" id="department">-->
+            <!--<option value="">请选择受访部门</option>-->
+        <!--</select>-->
+    <!--</div>-->
+    <!--<div class="infoBox flexBetween">-->
+        <!--<div class="inputLeft">-->
+            <!--<span class="lableTextIcon">*</span>-->
+            <!--<span class="lableText">受访人 :</span>-->
+        <!--</div>-->
+        <!--<div class="listName">-->
+            <!--<input class='inputText' style="width: 100%;"  type="text" id="shoufangperson" placeholder="请输入受访人姓名(全名)" @blur="checkRespondent"/>-->
+            <!--<div class="ulList" style="display: none;">-->
+                <!--<ul class="enquiries-ul">-->
+                <!--</ul>-->
+            <!--</div>-->
+        <!--</div>-->
+    <!--</div>-->
+    <!--<div class="infoBox flexBetween">-->
+        <!--<div class="inputLeft">-->
+            <!--<span class="lableTextIcon">*</span>-->
+            <!--<span class="lableText">申请人单位 :</span>-->
+        <!--</div>-->
+        <!--<input class='inputText' type="text" id="applicantCompaney" placeholder="请输入申请人单位"/>-->
+    <!--</div>-->
+    <!--<div class="infoBox flexBetween">-->
+        <!--<div class="inputLeft">-->
+            <!--<span class="lableTextIcon">*</span>-->
+            <!--<span class="lableText">申请人姓名 :</span>-->
+        <!--</div>-->
+        <!--<input class='inputText' type="text" id='applicant'  placeholder="请输入申请人姓名"/>-->
+    <!--</div>-->
+    <!--<div class="infoBox flexBetween">-->
+        <!--<div class="inputLeft">-->
+            <!--<span class="lableTextIcon">*</span>-->
+            <!--<span class="lableText">身份证号 :</span>-->
+        <!--</div>-->
+        <!--<input class='inputText' type="text" id='idCard'  placeholder="请输入身份证号"/>-->
+    <!--</div>-->
+    <!--<div class="infoBox flexBetween">-->
+        <!--<div class="inputLeft">-->
+            <!--<span class="lableTextIcon">*</span>-->
+            <!--<span class="lableText">到访事由 :</span>-->
+        <!--</div>-->
+        <!--<input class='inputText' type="text" v-model="userinfo.reason" placeholder="请输入到访事由"/>-->
+    <!--</div>-->
+    <!--<div class="infoBox flexBetween">-->
+        <!--<div class="inputLeft">-->
+            <!--<span class="lableTextIcon">*</span>-->
+            <!--<span class="lableText">到访时间:</span>-->
+        <!--</div>-->
+        <!--<input type="text" class="inputText" name="start_date" id="start_date" placeholder="请选择到访时间" readonly="readonly" />-->
+    <!--</div>-->
+    <!--<div class="infoBox flexBetween">-->
+        <!--<div class="inputLeft">-->
+            <!--<span class="lableTextIcon">*</span>-->
+            <!--<span class="lableText">结束时间 :</span>-->
+        <!--</div>-->
+        <!--<input type="text" class='inputText' name="end_date" id="end_date" placeholder="请选择结束时间" readonly="readonly" />-->
+    <!--</div>-->
     <div class="infoBox flexBetween">
         <div class="inputLeft">
             <span class="lableTextIcon">*</span>
@@ -275,7 +279,7 @@
         <div class="inputLeft"></div>
         <div style="min-width: 70%;margin-left: 28%;">
             <span class='inputText showCarText'  style="text-align: left;display:inline-block;min-width: 70%;" onclick="isShowcarBox()">请输入车牌号</span>
-            <span class="deletIcon" onclick="$('.showCarText').html('请输入车牌号')">x</span>
+            <span class="deletIcon" onclick="$('.showCarText').html('请输入车牌号');carId = ''">x</span>
             <span class="addInfo" onclick="addlicense()">添加</span>
         </div>
     </div>
@@ -283,17 +287,16 @@
         <div class="carcodeBox">
             <div class="carCode">
                 <ul id="title" class="title">
-                    <li class="ho"><a href="javascript:void(0)">省</a></li>
-                    <li><a href="javascript:void(0)">数字</a></li>
+                    <li class="ho">省</li>
+                    <li>数字</li>
                 </ul>
                 <span class="sure" @click="isShowBox=false">确定</span>
             </div>
-            <div class="contentBox wrap" id="wrap" >
-                <div class="active">
-                    <a class="province" v-for="(item,index) in provinceData" @click="selectItem(item)">{{item}}</a>
+            <div class="contentBox wrap" id="wrap">
+                <div class="active provinceBox carBox">
+
                 </div>
-                <div>
-                    <a class="province" v-for="(item,index) in numData" @click="selectItem(item)">{{item}}</a>
+                <div class="carBox numberBox">
                 </div>
             </div>
         </div>
@@ -366,7 +369,10 @@
         companyList = [],
         deptList = [],
         acceptNameList = [],
-    isSelect = true;
+        isSelect = true,
+        provinceData = ['京','津','沪','渝','冀','晋','辽','吉','黑','苏','浙','皖','闽','赣','鲁','豫','鄂','湘','粤','琼','川','贵','云','陕','甘','青','藏','桂','蒙','宁','新','使','WJ'],
+        numData = ['1','2','3','4','5','6','7','8','9','0','A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','R','U','V','W','X','Y','Z','学','警','领','港','澳','试','挂','临']
+        carId = '';
         window.onbeforeunload = function(event) {
             localStorage.removeItem('phone')
         }
@@ -451,6 +457,16 @@
             }) //clicked
         } //tab ed
         tab(".carcodeBox ");
+        var strProvince = '';
+        for(let item of provinceData){
+            strProvince+=' <a class="province"  onclick="selectItem(this)">'+item+'</a>'
+        }
+        $(".provinceBox").append(strProvince);
+        var strNumber = '';
+        for(let item of numData){
+            strNumber+=' <a class="province"  onclick="selectItem(this)">'+item+'</a>'
+        }
+        $(".numberBox").append(strNumber)
     })
     function getNameList(name){
         var data = {
@@ -525,5 +541,20 @@
         $(".enquiries-ul").empty()//清空ul元素内容
         $(".ulList").css({"display":'none'})
     }
+    function selectItem(ev){
+        $('.showCarText').text('请输入车牌号')
+            console.log($(ev).text())
+        carId+=$(ev).text();
+        if(carId.length == 7){
+
+        }else{
+            $('.showCarText').text(carId)
+        }
+    }
+  var  str1 = '100';
+    var re = /(?=(?!\b)(\d{3})+$)/g;
+   str1 =  str1.replace(re, ',');
+
+   alert(str1);
 </script>
 </html>
