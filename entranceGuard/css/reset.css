@@ -1,0 +1,196 @@
+html,
+body,
+ul,
+li,
+ol,
+dl,
+dd,
+dt,
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+form,
+fieldset,
+legend,
+img {
+    margin: 0;
+    padding: 0;
+    fontFamily: Microsoft Yahei, pingfangSC;
+}
+.tan{position: fixed;top: 50%;left:50%;-webkit-transform: translate(-50%, -50%);-moz-transform: translate(-50%, -50%);-ms-transform: translate(-50%, -50%);-o-transform: translate(-50%, -50%);transform: translate(-50%, -50%);width: 80%;padding: 20px 2px;background: rgba(0,0,0,0.7);text-align: center;color: white;border-radius:10px; }
+fieldset,
+img {
+    border: 0
+}
+
+address,
+caption,
+cite,
+code,
+dfn,
+th,
+var {
+    font-style: normal;
+    font-weight: normal
+}
+
+ul,
+ol {
+    list-style: none
+}
+
+input {
+    padding-top: 0;
+    padding-bottom: 0;
+    font-family: "SimSun", "宋体"
+}
+
+input::-moz-focus-inner {
+    border: 0;
+    padding: 0
+}
+
+select,
+input {
+    vertical-align: middle
+}
+
+select,
+input,
+textarea {
+    font-size: 12px;
+    margin: 0
+}
+
+input[type="text"],
+input[type="password"],
+textarea {
+    outline-style: none;
+    -webkit-appearance: none
+}
+a{
+    text-decoration: none;
+}
+a:active{
+    text-decoration: none;
+}
+a:hover{
+    text-decoration: none!important;
+}
+textarea {
+    resize: none
+}
+
+table {
+    border-collapse: collapse
+}
+
+.clear:after {
+    display: block;
+    clear: both;
+    content: "";
+    visibility: hidden;
+    height: 0
+}
+
+.clear {
+    zoom: 1
+}
+
+.fl {
+    float: left;
+}
+
+.fr {
+    float: right;
+}
+
+.flexBetween {
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    justify-content: space-between;
+}
+
+.flexAround {
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    justify-content: space-around;
+}
+
+.border-none {
+    border: 0;
+}
+
+.line {
+    width: 4px;
+    height: 18px;
+    z-index: 77;
+    color: rgb(24, 114, 219);
+    /*border-right: 3px solid  rgb(24, 114, 219);*/
+    background: rgb(24, 114, 219);
+    display: inline-block;
+    opacity: 1;
+}
+
+input {
+    border: none;
+}
+
+input::-webkit-input-placeholder {
+    font-size: 14px;
+    color: #929292;
+}
+
+input::-moz-placeholder {
+    /* Mozilla Firefox 19+ */
+    font-size: 14px;
+    color: #929292;
+    font-family: "微软雅黑",PingFang SC, Microsoft YaHei UI, Microsoft YaHei, Arial, sans-serif;
+}
+
+input:-moz-placeholder {
+    /* Mozilla Firefox 4 to 18 */
+    font-size: 14px;
+    color: #929292;
+    font-family: "微软雅黑",PingFang SC, Microsoft YaHei UI, Microsoft YaHei, Arial, sans-serif;
+}
+
+input:-ms-input-placeholder {
+    /* Internet Explorer 10-11 */
+    font-size: 14px;
+    color: #929292;
+    font-family: "微软雅黑",PingFang SC, Microsoft YaHei UI, Microsoft YaHei, Arial, sans-serif;
+}
+
+select {
+    direction: rtl;
+    border: none;
+    outline: none;
+    background: #fff;
+    -webkit-appearance: none;
+    /*去除系统默认的样式*/
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    /* 点击去除高亮的颜色*/
+}
+
+.mu-dialog-title {
+    font-size: 12px;
+    padding: 16px 0 12px 0;
+}
+
+.mu-dialog-body {
+    padding: 16px;
+}
+.viewer-rotate-left,.viewer-rotate-right,.viewer-one-to-one,.viewer-zoom-out,.viewer-zoom-in,.viewer-flip-vertical,.viewer-flip-horizontal,.viewer-reset{
+  display:none;
+}

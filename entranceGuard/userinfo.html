@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <link rel="stylesheet" type="text/css" href="./css/reset.css">
+    <link rel="stylesheet" type="text/css" href="LCalendar/css/LCalendar.css" />
+    <title>填写信息</title>
+    <style>
+        #userinfo {
+            background: #f4f4f4;
+            padding: 8px;
+            border-radius: 5px;
+        }
+        input[type="radio"] {
+            width: 22px;
+            height: 22px;
+            opacity: 1;
+         }
+
+        .radioTwo,.radioOne{
+            position: absolute;
+            left: 5px;
+            top: 8px;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            border: 1px solid #999;
+        }
+        .inputbox{
+            width: 49%;
+        }
+        .infoBox {
+            line-height: 40px;
+            background: #fff;
+            font-size: 14px;
+            padding: 10px;
+            border-bottom: 1px solid #eee;
+        }
+        .inputLeft{
+        }
+        .selectBox{
+            font-size: 14px;
+            color: #929292;
+            font-family: "微软雅黑",PingFang SC, Microsoft YaHei UI, Microsoft YaHei, Arial, sans-serif;
+            /*border: 1px solid #bbb;*/
+            width: 62%;
+            padding: 0 6px;
+            /*border-radius: 5px;*/
+            text-indent: 4px;
+        }
+        .inputLeft .lableTextIcon{
+            color: #f00;
+
+        }
+        .inputLeft .lableText{
+            display: inline-block;
+        }
+        .listName {
+            position: relative;
+            width: 59%;
+        }
+        .ulList li:hover{
+            background: #bbb;
+        }
+        .ulList{
+            position: absolute;
+            right: 0;
+            text-align: center;
+            background: #fff;
+            width: 100px;
+            min-height: 30px;
+            max-height: 160px;
+            overflow-y: scroll;
+            border: 1px solid #f4f4f4;
+            border-top: 0;
+        }
+        .infoBox .inputText{
+            color: #929292;
+            font-family: "\5FAE\8F6F\96C5\9ED1",PingFang SC, Microsoft YaHei UI, Microsoft YaHei, Arial, sans-serif;
+            width: 59%;
+            font-size:14px;
+            text-indent: 4px;
+            text-align: right;
+        }
+        #carSpan .deletIcon{
+            color:#fff;
+            font-size:16px;
+            display:inline-block;
+            background:#bbb;
+            height:20px;
+            width: 20px;
+            border-radius:50%;
+            text-align: center;
+            line-height: 16px;
+        }
+        #carSpan .addInfo{
+            padding: 8px 12px;
+            color: #fff;
+            background: #0076FF;
+            border-radius: 5px;
+            font-size: 12px;
+        }
+        .carcodeBox{
+            position: absolute;
+            border:1px solid #bbb;
+            background: #fff;
+            top: 0;
+            left: 10px;
+            width:calc(100% - 40px);
+            margin: 0 10px 10px;
+        }
+        .carcodeBox a{
+            color: #232323;
+        }
+        .carcodeBox .contentBox{
+            text-align: center;
+        }
+        .carcodeBox .carCode{
+            display: flex;
+        }
+        .carcodeBox .carCode ul{
+            width:100%;
+            display: flex;
+        }
+        .carcodeBox .carCode ul li{
+            width: 40%;
+            text-align: center;
+        }
+        .carcodeBox .contentBox .province{
+            display: inline-block;
+            height: 40px;
+            width:40px;
+            text-align: center;
+            line-height:40px;
+            border: 1px solid #bbb;
+            margin: 10px 6px 10px;
+        }
+        .carcodeBox .contentBox a:active{
+            color: #0076ff;
+            border-color: #0076ff;
+        }
+        .carcodeBox .sure{
+            position: absolute;
+            right:0;
+            display: inline-block;
+            width:20%;
+            height:40px;
+            background: #0076FF;
+            line-height: 40px;
+            text-align: center;
+            color: #fff;
+        }
+        #wrap .active {
+            display:block;
+        }
+        #title .ho {
+            border-bottom: 3px solid #0076FF;
+        }
+        #title .ho a {
+            color:#0076FF;
+        }
+    </style>
+</head>
+<body style="">
+
+<div id="userinfo">
+    <div class="infoBox flexBetween">
+        <div class="inputLeft">
+            <span class="lableTextIcon">*</span>
+            <span class="lableText">受访单位 :</span>
+        </div>
+        <select class="selectBox" id="company">
+            <option value="">请选择受访单位</option>
+        </select>
+    </div>
+    <div class="infoBox flexBetween">
+        <div class="inputLeft">
+            <span class="lableTextIcon">*</span>
+            <span class="lableText">受访单位部门 :</span>
+        </div>
+        <select class="selectBox" id="department">
+            <option value="">请选择受访部门</option>
+        </select>
+    </div>
+    <div class="infoBox flexBetween">
+        <div class="inputLeft">
+            <span class="lableTextIcon">*</span>
+            <span class="lableText">受访人 :</span>
+        </div>
+        <div class="listName">
+            <input class='inputText' style="width: 100%;"  type="text" id="shoufangperson" placeholder="请输入受访人姓名(全名)" @blur="checkRespondent"/>
+            <div class="ulList" style="display: none;">
+                <ul class="enquiries-ul">
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="infoBox flexBetween">
+        <div class="inputLeft">
+            <span class="lableTextIcon">*</span>
+            <span class="lableText">申请人单位 :</span>
+        </div>
+        <input class='inputText' type="text" id="applicantCompaney" placeholder="请输入申请人单位"/>
+    </div>
+    <div class="infoBox flexBetween">
+        <div class="inputLeft">
+            <span class="lableTextIcon">*</span>
+            <span class="lableText">申请人姓名 :</span>
+        </div>
+        <input class='inputText' type="text" id='applicant'  placeholder="请输入申请人姓名"/>
+    </div>
+    <div class="infoBox flexBetween">
+        <div class="inputLeft">
+            <span class="lableTextIcon">*</span>
+            <span class="lableText">身份证号 :</span>
+        </div>
+        <input class='inputText' type="text" id='idCard'  placeholder="请输入身份证号"/>
+    </div>
+    <div class="infoBox flexBetween">
+        <div class="inputLeft">
+            <span class="lableTextIcon">*</span>
+            <span class="lableText">到访事由 :</span>
+        </div>
+        <input class='inputText' type="text" v-model="userinfo.reason" placeholder="请输入到访事由"/>
+    </div>
+    <div class="infoBox flexBetween">
+        <div class="inputLeft">
+            <span class="lableTextIcon">*</span>
+            <span class="lableText">到访时间:</span>
+        </div>
+        <input type="text" class="inputText" name="start_date" id="start_date" placeholder="请选择到访时间" readonly="readonly" />
+    </div>
+    <div class="infoBox flexBetween">
+        <div class="inputLeft">
+            <span class="lableTextIcon">*</span>
+            <span class="lableText">结束时间 :</span>
+        </div>
+        <input type="text" class='inputText' name="end_date" id="end_date" placeholder="请选择结束时间" readonly="readonly" />
+    </div>
+    <div class="infoBox flexBetween">
+        <div class="inputLeft">
+            <span class="lableTextIcon">*</span>
+            <span class="lableText">是否有车辆需要进场 :</span>
+        </div>
+        <div class="flexAround inputbox">
+            <div class='selctOwn'>
+                <!--<img class='yuanImg' onclick='select(this)' src='./images/selectyuan.png'>-->
+                <!--<img class='yuanImg' onclick='select(this)'  src='./images/yuan.png'>-->
+                <input name="radio1" type="radio" id="input1">
+                <span class='yuanText'>是</span>
+            </div>
+            <div class='selctOwn'>
+                <!--<img class='yuanImg ' onclick='selectOne' src='./images/selectyuan.png'>-->
+                <!--<img class='yuanImg' onclick='selectOne' src='./images/yuan.png'>-->
+                <input name="radio1" type="radio" id="input2">
+                <span class='yuanText'>否</span>
+            </div>
+        </div>
+    </div>
+    <div class="infoBox flexBetween" style="display: none;">
+        <div class="inputLeft"></div>
+        <div style="min-width: 70%;">
+            <table class="carBox">
+                <tr v-for="(item,index) in carData">
+                    <td>{{item}}</td>
+                    <td @click="deleteItem(item,index)">删除</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <div class="infoBox"  id="carSpan">
+        <div class="inputLeft"></div>
+        <div style="min-width: 70%;margin-left: 28%;">
+            <span class='inputText showCarText'  style="text-align: left;display:inline-block;min-width: 70%;" onclick="isShowcarBox()">请输入车牌号</span>
+            <span class="deletIcon" onclick="$('.showCarText').html('请输入车牌号')">x</span>
+            <span class="addInfo" onclick="addlicense()">添加</span>
+        </div>
+    </div>
+    <div class="infoBox" style="position: relative;border:none;padding: 0;">
+        <div class="carcodeBox">
+            <div class="carCode">
+                <ul id="title" class="title">
+                    <li class="ho"><a href="javascript:void(0)">省</a></li>
+                    <li><a href="javascript:void(0)">数字</a></li>
+                </ul>
+                <span class="sure" @click="isShowBox=false">确定</span>
+            </div>
+            <div class="contentBox wrap" id="wrap" >
+                <div class="active">
+                    <a class="province" v-for="(item,index) in provinceData" @click="selectItem(item)">{{item}}</a>
+                </div>
+                <div>
+                    <a class="province" v-for="(item,index) in numData" @click="selectItem(item)">{{item}}</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="submitInfo" onclick="submit()">提交并进行活体检测</div>
+</div>
+<div id="tanwin" class="tan" style="display:none;"></div>
+</body>
+<script src="./js/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="LCalendar/js/LCalendar.js" type="text/javascript" charset="utf-8"></script>
+<script src="./js/commen.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+    var calendar = new LCalendar();
+    calendar.init({
+        'trigger': '#start_date', //标签id
+        'type': 'date', //date 调出日期选择 datetime 调出日期时间选择 time 调出时间选择 ym 调出年月选择,
+        'minDate': (new Date().getFullYear()) + '-' + 1 + '-' + 1, //最小日期
+        // 'maxDate': (new Date().getFullYear()+3) + '-' + 12 + '-' + 31 //最大日期
+    });
+    var calendar = new LCalendar();
+    calendar.init({
+        'trigger': '#end_date', //标签id
+        'type': 'date', //date 调出日期选择 datetime 调出日期时间选择 time 调出时间选择 ym 调出年月选择,
+        'minDate': (new Date().getFullYear()-3) + '-' + 1 + '-' + 1, //最小日期
+        'maxDate': (new Date().getFullYear()+3) + '-' + 12 + '-' + 31 //最大日期
+    });
+    $(function() {
+        $('#start_date').bind("input", function () {
+            if($('#end_date').val()){
+                var endStr = new Date($('#end_date').val()).getTime();
+                var startStr = new Date($(this).val()).getTime();
+                if(startStr>endStr){
+                    tanwin('结束时间不能小于到访时间')
+                    $(this).val('');
+                }
+            }
+        })
+        $('#end_date').bind("input", function () {
+            console.log($(this).val())
+            if($('#end_date').val()){
+                var startStr = new Date($('#start_date').val()).getTime();
+                var  endStr = new Date($(this).val()).getTime();
+                if(startStr>endStr){
+                    tanwin('结束时间不能小于到访时间')
+                    $(this).val('');
+                }
+            }
+        })
+    });
+</script>
+<script>
+    var ajaxUrl = 'http://holer65239.wdom.net/general-auth-service/accessforh5/';
+    var phone = '17666143833',
+        userinfo = {
+        company: '',
+        department: '',
+        respondent: '',
+        applicantCompaney: '',
+        applicant: '',
+        idCard: '',
+        reason: '',
+        startTime: '',
+        endTime: '',
+        isCar: '1',
+        licenseNum: '',
+        chapterUrl: '',
+        entourageList:[]
+        },
+        isShowthree = false,
+        companyList = [],
+        deptList = [],
+        acceptNameList = [],
+    isSelect = true;
+        window.onbeforeunload = function(event) {
+            localStorage.removeItem('phone')
+        }
+    $(function(){
+        if(localStorage.getItem('phone')){
+            phone = localStorage.getItem('phone');
+        }
+        getCompany();
+        $("#company").on("change",function(){
+            userinfo.company = $(this).find('option:selected').val();
+            if(userinfo.company){
+                for(var item of companyList){
+                    if(item.code === userinfo.company){
+                        deptList = item.deptList;
+                        var str='';
+                        for(let item of deptList){
+                            str+='<option value='+item.code+'>'+item.name+'</option>'
+                        }
+                        $("#department").append(str)
+                    }
+                }
+            }else{
+                deptList = [];
+                var str='<option value="">请选择受访部门</option>';
+                $("#department").html(str)
+                userinfo.department = '';
+            }
+        })
+        document.addEventListener('message', function(msg) {//获取客户端人脸识别数据
+            var data = JSON.parse(msg.data);
+            if(data){
+                if(data.hasOwnProperty('imageData')){
+                    userinfo.chapterUrl = data.imageData;
+                    localStorage.setItem("url",userinfo.chapterUrl)
+                    if(userinfo.chapterUrl){
+                        isShowthree = true;
+                        sureJump()
+                    }
+                }
+            }else{
+                Toast("检测失败，请重新检测")
+            }
+        });
+        $("#shoufangperson").bind("input", function () {
+            var val = $(this).val();
+            if(val){
+                getNameList(val)
+            }
+        })
+        $("#idCard").on('change',function(){
+            var reg= /(^[1-9]\d{5}(18|19|([23]\d))\d{2}((0[1-9])|(10|11|12))(([0-2][1-9])|10|20|30|31)\d{3}[0-9Xx]$)|(^[1-9]\d{5}\d{2}((0[1-9])|(10|11|12))(([0-2][1-9])|10|20|30|31)\d{2}$)/;
+            console.log($("#idCard").val())
+            if(!(reg.test($("#idCard").val()))){
+                tanwin('请输入正确身份证号')
+            }
+        })
+        $("#input1").attr("checked","checked");//默认第一个选中
+        $('input:radio[name="radio1"]').change(function () {
+            if($("#input1").is(":checked")){
+                isSelect = true;
+                $("#carSpan").css({"display":"block"})
+            }
+            if($("#input2").is(":checked")){
+                isSelect = false;
+                $("#carSpan").css({"display":"none"})
+            }
+        })
+        function tab(pa) {
+            $(pa + ".title li").click(function() {
+                //找到是点击第几个
+                var ind = $(pa + "#title li").index($(this));
+                //alert(ind);
+                //以前显示的隐藏
+                $(pa + ".wrap div:visible").hide();
+                //第几个显示
+                $(pa + ".wrap div:eq(" + ind + ")").show();
+                //有高亮ho 去掉高亮ho
+                $(pa + ".title li.ho").removeClass("ho");
+                //被点击的元素添加ho
+                $(this).addClass("ho");
+
+            }) //clicked
+        } //tab ed
+        tab(".carcodeBox ");
+    })
+    function getNameList(name){
+        var data = {
+            acceptName: name
+        }
+        data = JSON.stringify(data)
+        $.ajax({
+            url: ajaxUrl + 'getAcceptNameList',
+            timeout: 3000,
+            type: 'post',
+            contentType: 'application/json;charset=utf-8',
+            dataType: "json",
+            data:data,
+            success: function(response) {
+                if(response.rescode == 200){
+                    acceptNameList = response.acceptNameList;
+                    if(acceptNameList.length != 0){
+                        $(".ulList").css({"display":'block'});
+                        var str = '';
+                        for(var item of acceptNameList){
+                            str+='<li class="ulListli" onclick="getName(this)"  data-name="'+item.name+'">'+item.name+'</li>'
+                        }
+                        $(".ulList").find('ul').html($(str));
+                    }
+                }else{
+                    tanwin(response.data.resdes)
+                }
+            },
+            error: function(XMLHttpRequest, textStatus, errorThrown) {
+            },
+            complete : function(XMLHttpRequest,status){ //请求完成后最终执行参数
+            }
+        });
+    }
+    function getCompany(){
+        var data = {
+            phoneNum: phone
+        }
+        data = JSON.stringify(data)
+        $.ajax({
+            url: ajaxUrl + 'getCompanyDept',
+            timeout: 3000,
+            type: 'post',
+            contentType: 'application/json;charset=utf-8',
+            dataType: "json",
+            data:data,
+            success: function(response) {
+                if(response.rescode == 200){
+                    companyList = response.companyList;
+                    var str='';
+                    for(let item of companyList){
+                        str+='<option value='+item.code+'>'+item.name+'</option>'
+                    }
+                    $("#company").append(str)
+
+                }else{
+                    tanwin(response.data.resdes)
+                }
+            },
+            error: function(XMLHttpRequest, textStatus, errorThrown) {
+            },
+            complete : function(XMLHttpRequest,status){ //请求完成后最终执行参数
+            }
+        });
+    }
+    function submit(){
+        window.postMessage('success');
+    }
+    function getName(ev){
+        var val = $(ev).text()
+        $("#shoufangperson").val(val)
+        $(".enquiries-ul").empty()//清空ul元素内容
+        $(".ulList").css({"display":'none'})
+    }
+</script>
+</html>
