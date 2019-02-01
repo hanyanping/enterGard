@@ -166,6 +166,16 @@
         #title .ho a {
             color:#0076FF;
         }
+        .carTableBox tr td{
+            border: 1px solid #bbb;
+            padding: 2px 10px;
+            text-align: center;
+        }
+        .carTableBox tr td:nth-last-child(1){
+            color: #f00;
+            cursor: pointer;
+        }
+
     </style>
 </head>
 <body style="">
@@ -264,33 +274,33 @@
             </div>
         </div>
     </div>
-    <div class="infoBox flexBetween" style="display: none;">
+    <div class="infoBox flexBetween carTable " style="display: none;">
         <div class="inputLeft"></div>
-        <div style="min-width: 70%;">
-            <table class="carBox">
-                <tr v-for="(item,index) in carData">
-                    <td>{{item}}</td>
-                    <td @click="deleteItem(item,index)">删除</td>
-                </tr>
+        <div style="margin-left: 30%;">
+            <table class="carTableBox">
+                <!--<tr v-for="(item,index) in carData">-->
+                    <!--<td>{{item}}</td>-->
+                    <!--<td @click="deleteItem(item,index)">删除</td>-->
+                <!--</tr>-->
             </table>
         </div>
     </div>
     <div class="infoBox"  id="carSpan">
         <div class="inputLeft"></div>
         <div style="min-width: 70%;margin-left: 28%;">
-            <span class='inputText showCarText'  style="text-align: left;display:inline-block;min-width: 70%;" onclick="isShowcarBox()">请输入车牌号</span>
+            <span class='inputText showCarText'  style="text-align: left;display:inline-block;min-width: 62%;" onclick="$('#carCode').css({'display':'block'})">请输入车牌号</span>
             <span class="deletIcon" onclick="$('.showCarText').html('请输入车牌号');carId = ''">x</span>
-            <span class="addInfo" onclick="addlicense()">添加</span>
+            <span class="addInfo addCarInfo">添加</span>
         </div>
     </div>
-    <div class="infoBox" style="position: relative;border:none;padding: 0;">
+    <div class="infoBox" id='carCode' style="position: relative;border:none;padding: 0;">
         <div class="carcodeBox">
             <div class="carCode">
                 <ul id="title" class="title">
                     <li class="ho">省</li>
                     <li>数字</li>
                 </ul>
-                <span class="sure" @click="isShowBox=false">确定</span>
+                <span class="sureCar sure" >确定</span>
             </div>
             <div class="contentBox wrap" id="wrap">
                 <div class="active provinceBox carBox">
@@ -372,7 +382,8 @@
         isSelect = true,
         provinceData = ['京','津','沪','渝','冀','晋','辽','吉','黑','苏','浙','皖','闽','赣','鲁','豫','鄂','湘','粤','琼','川','贵','云','陕','甘','青','藏','桂','蒙','宁','新','使','WJ'],
         numData = ['1','2','3','4','5','6','7','8','9','0','A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','R','U','V','W','X','Y','Z','学','警','领','港','澳','试','挂','临']
-        carId = '';
+        carId = '',
+        carData = [];
         window.onbeforeunload = function(event) {
             localStorage.removeItem('phone')
         }
@@ -466,8 +477,37 @@
         for(let item of numData){
             strNumber+=' <a class="province"  onclick="selectItem(this)">'+item+'</a>'
         }
-        $(".numberBox").append(strNumber)
+        $(".numberBox").append(strNumber);
+        $(".sureCar").on("click",function(){
+            $('#carCode').css({'display':'none'})
+        })
+        $(".addCarInfo").on("click",function(){
+            if(carData.length != 0){
+                $(".carTable").css({'display':"block"})
+            }
+            if(carData.length ==5){
+                tanwin(" 车辆最多可添加5辆");
+                return;
+            }
+            var carNUm = $(".showCarText").text();
+            if(carNUm){
+                if (carNUm.length == 7){
+                        carData.push(carNUm);
+                        carId = '';
+                        $(".showCarText").text('请输入车牌号');
+                        var str = '<tr><td>'+carNUm+'</td><td data-id="'+carNUm+'" onclick="deleteItem(this)">删除</td></tr>'
+                        $(".carTableBox").append($(str))
+                }else{
+                    tanwin(" 请输入正确车牌号");
+                }
+            }else{
+                tanwin(" 请输入车牌号");
+            }
+        })
     })
+    function deleteItem(ev){
+        $(ev.target).parent().remove();
+    }
     function getNameList(name){
         var data = {
             acceptName: name
@@ -542,19 +582,12 @@
         $(".ulList").css({"display":'none'})
     }
     function selectItem(ev){
-        $('.showCarText').text('请输入车牌号')
-            console.log($(ev).text())
-        carId+=$(ev).text();
         if(carId.length == 7){
 
         }else{
+            carId+=$(ev).text();
             $('.showCarText').text(carId)
         }
     }
-  var  str1 = '100';
-    var re = /(?=(?!\b)(\d{3})+$)/g;
-   str1 =  str1.replace(re, ',');
-
-   alert(str1);
 </script>
 </html>

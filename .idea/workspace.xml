@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e9a7bbae-2fb8-4e49-b360-5c5882fe06e3" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/entranceGuard/userinfo.html" beforeDir="false" afterPath="$PROJECT_DIR$/entranceGuard/userinfo.html" afterDir="false" />
     </list>
@@ -21,7 +20,7 @@
       <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/entranceGuard/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="679">
+            <state relative-caret-position="1275">
               <caret line="51" column="17" selection-start-line="51" selection-start-column="17" selection-end-line="51" selection-end-column="17" />
             </state>
           </provider>
@@ -30,26 +29,17 @@
       <file leaf-file-name="userinfo.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/entranceGuard/userinfo.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="399">
-              <caret line="555" column="10" selection-start-line="555" selection-start-column="10" selection-end-line="555" selection-end-column="10" />
+            <state relative-caret-position="304">
+              <caret line="293" column="14" lean-forward="true" selection-start-line="293" selection-start-column="14" selection-end-line="293" selection-end-column="14" />
               <folding>
-                <element signature="n#style#0;n#div#11;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#1;n#div#11;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#1;n#div#12;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#span#0;n#div#1;n#div#12;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#13;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#1;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#1;n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#span#0;n#div#1;n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#3;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#div#3;n#div#0;n#body#0;n#html#0;n#!!top" />
                 <element signature="n#style#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="e#6321#7144#0" />
-                <element signature="e#7298#7609#0" />
-                <element signature="e#8011#8780#0" />
-                <element signature="e#8841#9345#0" />
-                <element signature="e#9403#9519#0" />
-                <element signature="e#9564#9909#0" />
-                <element signature="e#10990#11183#0" />
-                <element signature="e#9948#11163#0" />
-                <element signature="e#11189#12181#0" />
-                <element signature="e#12203#12249#0" />
-                <element signature="e#12274#12440#0" />
+                <element signature="n#script#3;n#html#0;n#!!top" />
               </folding>
             </state>
           </provider>
@@ -103,8 +93,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="HTML File" />
         <option value="JavaScript File" />
+        <option value="HTML File" />
       </list>
     </option>
   </component>
@@ -126,6 +116,16 @@
       <find>active</find>
       <find>wrap</find>
       <find>carId</find>
+      <find>alert</find>
+      <find>closeCarBox</find>
+      <find>sureCar</find>
+      <find>isshowcarbox</find>
+      <find>isShowcarBox</find>
+      <find>showCarText</find>
+      <find>carTableBox</find>
+      <find>carBox</find>
+      <find>addCarInfo</find>
+      <find>ease-in-out</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -141,6 +141,7 @@
         <option value="$PROJECT_DIR$/entranceGuard/index.html" />
         <option value="$PROJECT_DIR$/entranceGuard/css/reset.css" />
         <option value="$PROJECT_DIR$/entranceGuard/js/commen.js" />
+        <option value="$PROJECT_DIR$/entranceGuard/LCalendar/applayDetail.html" />
         <option value="$PROJECT_DIR$/entranceGuard/userinfo.html" />
       </list>
     </option>
@@ -154,8 +155,8 @@
   <component name="NodePackageJsonFileManager">
     <packageJsonPaths />
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-7" />
+  <component name="ProjectFrameBounds" extendedState="7">
+    <option name="x" value="-1" />
     <option name="width" value="1364" />
     <option name="height" value="735" />
   </component>
@@ -188,7 +189,19 @@
               <item name="entrance" type="b2602c69:ProjectViewProjectNode" />
               <item name="entrance" type="462c0819:PsiDirectoryNode" />
               <item name="entranceGuard" type="462c0819:PsiDirectoryNode" />
+              <item name="images" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="entrance" type="b2602c69:ProjectViewProjectNode" />
+              <item name="entrance" type="462c0819:PsiDirectoryNode" />
+              <item name="entranceGuard" type="462c0819:PsiDirectoryNode" />
               <item name="js" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="entrance" type="b2602c69:ProjectViewProjectNode" />
+              <item name="entrance" type="462c0819:PsiDirectoryNode" />
+              <item name="entranceGuard" type="462c0819:PsiDirectoryNode" />
+              <item name="LCalendar" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -199,7 +212,7 @@
   <component name="PropertiesComponent">
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../zhongche/bm.html" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../ifxj_web_pc" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
   </component>
@@ -234,17 +247,23 @@
       <updated>1548293419598</updated>
       <workItem from="1548293421286" duration="19144000" />
       <workItem from="1548378805580" duration="8576000" />
+      <workItem from="1548638410372" duration="8252000" />
+      <workItem from="1548724458840" duration="614000" />
+      <workItem from="1548754091145" duration="1494000" />
+      <workItem from="1548811360690" duration="2032000" />
+      <workItem from="1548898073865" duration="602000" />
+      <workItem from="1548985261074" duration="1103000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="27720000" />
+    <option name="totallyTimeSpent" value="41817000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1376" height="744" extended-state="6" />
+    <frame x="-8" y="-8" width="1376" height="744" extended-state="7" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.055882353" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.15882353" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
@@ -270,6 +289,258 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/../zhongche/interactive.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="5350">
+          <caret line="214" column="43" selection-start-line="214" selection-start-column="23" selection-end-line="214" selection-end-column="43" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/entranceGuard/userinfo.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="7600">
+          <caret line="359" column="8" selection-start-line="359" selection-start-column="8" selection-end-line="359" selection-end-column="8" />
+          <folding>
+            <element signature="n#style#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#1;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#1;n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#0;n#div#1;n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#3;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#div#3;n#div#0;n#body#0;n#html#0;n#!!top" />
+            <element signature="n#style#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#script#3;n#html#0;n#!!top" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/entranceGuard/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1275">
+          <caret line="51" column="17" selection-start-line="51" selection-start-column="17" selection-end-line="51" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/entranceGuard/css/reset.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="9" column="3" selection-start-line="9" selection-start-column="3" selection-end-line="9" selection-end-column="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/entranceGuard/js/jquery.min.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/entranceGuard/js/commen.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="9" column="2" selection-start-line="9" selection-start-column="2" selection-end-line="9" selection-end-column="2" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/entranceGuard/LCalendar/js/LCalendar.js">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../zhongche/interactive.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="5350">
+          <caret line="214" column="43" selection-start-line="214" selection-start-column="23" selection-end-line="214" selection-end-column="43" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/entranceGuard/userinfo.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4600">
+          <caret line="184" column="8" selection-start-line="184" selection-start-column="8" selection-end-line="190" selection-end-column="9" />
+          <folding>
+            <element signature="n#style#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#1;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#1;n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#0;n#div#1;n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#3;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#div#3;n#div#0;n#body#0;n#html#0;n#!!top" />
+            <element signature="n#style#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#script#3;n#html#0;n#!!top" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/entranceGuard/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1275">
+          <caret line="51" column="17" selection-start-line="51" selection-start-column="17" selection-end-line="51" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/entranceGuard/css/reset.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="9" column="3" selection-start-line="9" selection-start-column="3" selection-end-line="9" selection-end-column="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/entranceGuard/js/jquery.min.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/entranceGuard/js/commen.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="9" column="2" selection-start-line="9" selection-start-column="2" selection-end-line="9" selection-end-column="2" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/entranceGuard/LCalendar/js/LCalendar.js">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../zhongche/interactive.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="5350">
+          <caret line="214" column="43" selection-start-line="214" selection-start-column="23" selection-end-line="214" selection-end-column="43" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/entranceGuard/userinfo.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="11100">
+          <caret line="499" column="40" lean-forward="true" selection-start-line="499" selection-start-column="40" selection-end-line="499" selection-end-column="40" />
+          <folding>
+            <element signature="n#style#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#1;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#1;n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#0;n#div#1;n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#3;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#div#3;n#div#0;n#body#0;n#html#0;n#!!top" />
+            <element signature="n#style#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#script#3;n#html#0;n#!!top" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/entranceGuard/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1275">
+          <caret line="51" column="17" selection-start-line="51" selection-start-column="17" selection-end-line="51" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/entranceGuard/css/reset.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="9" column="3" selection-start-line="9" selection-start-column="3" selection-end-line="9" selection-end-column="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/entranceGuard/js/jquery.min.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/entranceGuard/js/commen.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="9" column="2" selection-start-line="9" selection-start-column="2" selection-end-line="9" selection-end-column="2" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/entranceGuard/LCalendar/js/LCalendar.js">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../zhongche/interactive.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="5350">
+          <caret line="214" column="43" selection-start-line="214" selection-start-column="23" selection-end-line="214" selection-end-column="43" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/entranceGuard/userinfo.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="10925">
+          <caret line="492" column="40" lean-forward="true" selection-start-line="492" selection-start-column="40" selection-end-line="492" selection-end-column="40" />
+          <folding>
+            <element signature="n#style#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#1;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#1;n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#0;n#div#1;n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#3;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#div#3;n#div#0;n#body#0;n#html#0;n#!!top" />
+            <element signature="n#style#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#script#3;n#html#0;n#!!top" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/entranceGuard/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1275">
+          <caret line="51" column="17" selection-start-line="51" selection-start-column="17" selection-end-line="51" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/entranceGuard/css/reset.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="9" column="3" selection-start-line="9" selection-start-column="3" selection-end-line="9" selection-end-column="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/entranceGuard/js/jquery.min.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/entranceGuard/js/commen.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="9" column="2" selection-start-line="9" selection-start-column="2" selection-end-line="9" selection-end-column="2" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/entranceGuard/LCalendar/js/LCalendar.js">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../zhongche/interactive.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="5350">
+          <caret line="214" column="43" selection-start-line="214" selection-start-column="23" selection-end-line="214" selection-end-column="43" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/entranceGuard/userinfo.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="13875">
+          <caret line="555" column="10" selection-start-line="555" selection-start-column="10" selection-end-line="555" selection-end-column="10" />
+          <folding>
+            <element signature="n#style#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#1;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#1;n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#0;n#div#1;n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#3;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#div#3;n#div#0;n#body#0;n#html#0;n#!!top" />
+            <element signature="n#style#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#script#3;n#html#0;n#!!top" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/entranceGuard/index.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1275">
@@ -282,23 +553,14 @@
         <state relative-caret-position="5175">
           <caret line="272" column="48" lean-forward="true" selection-start-line="272" selection-start-column="48" selection-end-line="272" selection-end-column="48" />
           <folding>
-            <element signature="n#style#0;n#div#11;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#1;n#div#11;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#1;n#div#12;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#span#0;n#div#1;n#div#12;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#13;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#1;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#1;n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#0;n#div#1;n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#3;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#div#3;n#div#0;n#body#0;n#html#0;n#!!top" />
             <element signature="n#style#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="e#6321#7144#0" />
-            <element signature="e#7298#7609#0" />
-            <element signature="e#8011#8780#0" />
-            <element signature="e#8841#9345#0" />
-            <element signature="e#9403#9519#0" />
-            <element signature="e#9564#9909#0" />
-            <element signature="e#10990#11183#0" />
-            <element signature="e#9948#11163#0" />
-            <element signature="e#11189#12181#0" />
-            <element signature="e#12203#12249#0" />
-            <element signature="e#12274#12440#0" />
+            <element signature="n#script#3;n#html#0;n#!!top" />
           </folding>
         </state>
       </provider>
@@ -383,33 +645,25 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/entranceGuard/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="679">
+        <state relative-caret-position="1275">
           <caret line="51" column="17" selection-start-line="51" selection-start-column="17" selection-end-line="51" selection-end-column="17" />
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/entranceGuard/LCalendar/applayDetail.html" />
     <entry file="file://$PROJECT_DIR$/entranceGuard/userinfo.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="399">
-          <caret line="555" column="10" selection-start-line="555" selection-start-column="10" selection-end-line="555" selection-end-column="10" />
+        <state relative-caret-position="304">
+          <caret line="293" column="14" lean-forward="true" selection-start-line="293" selection-start-column="14" selection-end-line="293" selection-end-column="14" />
           <folding>
-            <element signature="n#style#0;n#div#11;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#1;n#div#11;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#1;n#div#12;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#span#0;n#div#1;n#div#12;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#13;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#1;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#1;n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#0;n#div#1;n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#3;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#div#3;n#div#0;n#body#0;n#html#0;n#!!top" />
             <element signature="n#style#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="e#6321#7144#0" />
-            <element signature="e#7298#7609#0" />
-            <element signature="e#8011#8780#0" />
-            <element signature="e#8841#9345#0" />
-            <element signature="e#9403#9519#0" />
-            <element signature="e#9564#9909#0" />
-            <element signature="e#10990#11183#0" />
-            <element signature="e#9948#11163#0" />
-            <element signature="e#11189#12181#0" />
-            <element signature="e#12203#12249#0" />
-            <element signature="e#12274#12440#0" />
+            <element signature="n#script#3;n#html#0;n#!!top" />
           </folding>
         </state>
       </provider>
