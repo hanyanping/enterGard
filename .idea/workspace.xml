@@ -3,7 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="e9a7bbae-2fb8-4e49-b360-5c5882fe06e3" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/entranceGuard/userinfo.html" beforeDir="false" afterPath="$PROJECT_DIR$/entranceGuard/userinfo.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/entranceGuard/applayList.html" beforeDir="false" afterPath="$PROJECT_DIR$/entranceGuard/applayList.html" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -26,7 +26,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="userinfo.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="userinfo.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/entranceGuard/userinfo.html">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="304">
@@ -41,6 +41,15 @@
                 <element signature="n#style#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#script#3;n#html#0;n#!!top" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="applayList.html" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/entranceGuard/applayList.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="428">
+              <caret line="69" column="36" selection-start-line="69" selection-start-column="25" selection-end-line="69" selection-end-column="36" />
             </state>
           </provider>
         </entry>
@@ -143,6 +152,7 @@
         <option value="$PROJECT_DIR$/entranceGuard/js/commen.js" />
         <option value="$PROJECT_DIR$/entranceGuard/LCalendar/applayDetail.html" />
         <option value="$PROJECT_DIR$/entranceGuard/userinfo.html" />
+        <option value="$PROJECT_DIR$/entranceGuard/applayList.html" />
       </list>
     </option>
   </component>
@@ -155,7 +165,7 @@
   <component name="NodePackageJsonFileManager">
     <packageJsonPaths />
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="-1" />
     <option name="width" value="1364" />
     <option name="height" value="735" />
@@ -166,7 +176,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -207,6 +216,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -253,17 +263,18 @@
       <workItem from="1548811360690" duration="2032000" />
       <workItem from="1548898073865" duration="602000" />
       <workItem from="1548985261074" duration="1103000" />
+      <workItem from="1549853930637" duration="4019000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="41817000" />
+    <option name="totallyTimeSpent" value="45836000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1376" height="744" extended-state="7" />
+    <frame x="-8" y="-8" width="1376" height="744" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.15882353" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.15735294" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
@@ -289,13 +300,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/../zhongche/interactive.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="5350">
-          <caret line="214" column="43" selection-start-line="214" selection-start-column="23" selection-end-line="214" selection-end-column="43" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/entranceGuard/userinfo.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="7600">
@@ -665,6 +669,13 @@
             <element signature="n#style#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#script#3;n#html#0;n#!!top" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/entranceGuard/applayList.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="428">
+          <caret line="69" column="36" selection-start-line="69" selection-start-column="25" selection-end-line="69" selection-end-column="36" />
         </state>
       </provider>
     </entry>

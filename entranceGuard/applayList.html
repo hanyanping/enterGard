@@ -33,16 +33,53 @@
             font-size: 16px;
             color: #232323;
         }
+        #div1 {
+            width:100px; height:100px;
+            background-color:black;
+        }
     </style>
     <script src="./js/jquery.min.js" type="text/javascript" charset="utf-8"></script>
 </head>
 <body>
+<input type="button" id="btnSlideDown" value="下拉"/>
+<input type="button" id="btnSlideUp" value="收起"/>
+<input type="button" id="btnTotal" value="合成"/>
+<div id="div1"></div>
 <div id="home">
 
 </div>
+
+
 </body>
 <script>
+    $(function() {
+        //下拉按钮
+        $('#btnSlideDown').click(function(){
+            //$('#div1').slideDown();
+            $('#div1').slideDown(200);  //1000毫秒，表示动画下拉过程时间。
+        });
+
+        //收起按钮
+        $('#btnSlideUp').click(function(){
+            //$('#div1').slideUp();
+            $('#div1').slideUp(200);
+        });
+
+        //合成按钮
+        $('#btnTotal').click(function(){
+            //$('#div1').slideToggle();
+            $('#div1').slideToggle(1000);
+        });
+    });
+
+
+
+
+
     $(function(){
+
+
+
         var  listdata = [
             {'name':'预约申请',icon:'./images/shenqing.png',router: './userinfo.html'},
             {'name':'历史申请记录',icon:'./images/liebiao.png',router: './applayList.html'}];
