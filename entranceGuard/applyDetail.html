@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+            <meta charset="utf-8">
+            <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+            <meta name="viewport" content="initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+            <meta name="apple-mobile-web-app-capable" content="yes"/>
+            <link rel="stylesheet" type="text/css" href="./css/reset.css">
+            <title>门禁管理系统</title>
+            <style>
+                .applyDetail{
+                    background: #f4f4f4;
+                    padding: 8px;
+                    min-height: 100vh;
+                }
+                .detail{
+                    background: #fff;
+                    border-radius: 5px;
+                    padding: 8px;
+                    font-size: 14px;
+                    color: #232323;
+                }
+                .infoBox .shoufangInfo{
+                    padding: 8px 0;
+                }
+                .peitong {
+                    display: flex;
+                    position: relative;
+                    padding: 5px 0;
+                }
+                .personInfo {
+                    margin-left: 4px;
+                }
+               .peitong .personInfo p {
+                    padding-bottom: 5px;
+                }
+                .reApplay {
+                    background: #0076FF;
+                    color: #fff;
+                    padding: 8px 16px;
+                    border-radius: 5px;
+                }
+                .imgInfo {
+                    background: url('./images/icon.jpg') no-repeat center center;
+                    background-size: cover;
+                    height: 120px;
+                    width: 90px;
+                }
+            </style>
+            <script src="./js/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+        </head>
+<body>
+<div class="applyDetail">
+    <div class="detail">
+        <div class="infoTop flexBetween">
+            <div class="infoBox">
+                <p class="shoufangInfo">受访单位 : <span class="acceptCompanyName"></span></p>
+                <p class="shoufangInfo">受访部门 : <span class="deptName"></span></p>
+                <p class="shoufangInfo">受访人 : <span class="acceptName"></span></p>
+                <p class="shoufangInfo">受访手机号 : <span class="acceptPhone"></span></p>
+                <p class="shoufangInfo">申请人姓名 : <span class="name"></span></p>
+            </div>
+            <div class="imgInfo">
+            </div>
+        </div>
+        <div class="infoBox">
+            <p class="shoufangInfo">身份证号 : <span class="cardNum"></span></p>
+            <p class="shoufangInfo">到访事由 : <span class="reason"></span></p>
+            <p class="shoufangInfo">到访时间 : <span class="startTime"></span></p>
+            <p class="shoufangInfo">结束时间 : <span class="endTime"></span></p>
+            <p class="shoufangInfo"  id="hasCar">是否携带车辆 : <span class="licenseNum"></span></p>
+            <p class="shoufangInfo" id="noCar">是否携带车辆 : 否</p>
+            <div class='peitong' v-if="entourageList.length != 0">
+                <span>陪同人 : </span>
+                <div class="personInfo">
+                    <p v-for="item in userInfo.entourageList"></p>
+                </div>
+            </div>
+            <div class='peitong flexBetween'>
+                <span v-if="userInfo.auditStatus == 1">状态 : 待审核</span>
+                <span v-if="userInfo.auditStatus == 2">状态 : 审核不通过</span>
+                <span v-if="userInfo.auditStatus == 3">状态 : 审核通过</span>
+                <div class="reApplay" v-if="userInfo.auditStatus == 2" @click="goInfo">
+                    重新申请
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+<script>
+    var phone = '';
+
+    $(function(){
+        if(localStorage.getItem('phone')){
+            phone = localStorage.getItem('phone');
+        }
+        getDataDetail()
+    })
+    function getDataDetail(){
+        console.log(5555)
+        var userInfo={
+            acceptCompanyName: 'eeeee',
+            deptName: 'dddd',
+            acceptName: 'ddd',
+            acceptPhone: 'eeeee',
+            name: 'dddd',
+            cardNum: 'ddd',
+            reason: 'eeeee',
+            endTime: 'dddd',
+            startTime: 'ddd',
+            photoUrl: '',
+            carFlag: 1
+        };
+        $(".acceptCompanyName").html(userInfo.acceptCompanyName)
+        console.log( $(".acceptCompanyName").html())
+        $(".deptName").html(userInfo.deptName);
+        $(".acceptName").html(userInfo.acceptName);
+        $(".acceptPhone").html(userInfo.acceptPhone);
+        $(".name").html(userInfo.name)
+
+        $(".cardNum").html(userInfo.cardNum)
+        $(".reason").html(userInfo.reason);
+        $(".startTime").html(userInfo.startTime);
+        $(".endTime").html(userInfo.endTime);
+//        $(".imgInfo").css({"backgroundImage:"+userInfo.photoUrl});
+        if(userInfo.carFlag == 1){
+            $("#hasCar").css({'display':'block'});
+            $(".licenseNum").html(userInfo.licenseNum);
+        }
+        if(userInfo.carFlag == 2){
+            $("#noCar").css({'display':'block'});
+
+        }
+        var data = {
+            applyNum: 'tttttttt'
+        }
+        data = JSON.stringify(data);
+        $.ajax({
+            url: ajaxUrl + 'getApplyInfo',
+            timeout: 3000,
+            type: 'post',
+            contentType: 'application/json;charset=utf-8',
+            dataType: "json",
+            data:data,
+            success: function(response) {
+                if(response.rescode == 200){
+                    console.log(response)
+                    var userInfo = response.data;
+                    $(".acceptCompanyName").html(userInfo.acceptCompanyName)
+                    $(".deptName").html(userInfo.deptName);
+                    $(".acceptName").html(userInfo.acceptName);
+                    $(".acceptPhone").html(userInfo.acceptPhone);
+                    $(".name").html(userInfo.name)
+
+                    $(".cardNum").html(userInfo.cardNum)
+                    $(".reason").html(userInfo.reason);
+                    $(".startTime").html(userInfo.startTime);
+                    $(".endTime").html(userInfo.endTime);
+//                    $(".imgInfo").css({"backgroundImage:"userInfo.photoUrl});
+                    if(userInfo.carFlag == 1){
+                        $("#hasCar").css({'display':'block'});
+                        $(".licenseNum").html(userInfo.licenseNum);
+                    }
+                    if(userInfo.carFlag == 2){
+                        $("#noCar").css({'display':'block'});
+
+                    }
+//                    this.entourageList = this.userInfo.entourageList;
+                }else{
+                    tanwin(response.data.resdes)
+                }
+            },
+            error: function(XMLHttpRequest, textStatus, errorThrown) {
+            },
+            complete : function(XMLHttpRequest,status){ //请求完成后最终执行参数
+            }
+        });
+    }
+</script>
+</html></title>
+</head>
+<body>
+
+</body>
+</html>

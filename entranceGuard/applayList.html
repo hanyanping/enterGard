@@ -8,88 +8,232 @@
     <link rel="stylesheet" type="text/css" href="./css/reset.css">
     <title>历史申请记录</title>
     <style>
-        #home{
-            background: #f4f4f4;
-            font-family: "微软雅黑",PingFang SC, Microsoft YaHei UI, Microsoft YaHei, Arial, sans-serif;
-            width:100%;
-            height: 100vh;
-            overflow: hidden;
-        }
-        .homeList{
+        .listBox {
             background: #fff;
-            margin-bottom: 20px;
-            padding: 15px 20px;
+            padding: 0 16px;
+            margin: 12px 0;
         }
-        .homeList img{
-            height: 50px;
-            width:50px;
-            display: inline-block;
-            vertical-align: middle;
-        }
-        .homeList span{
-            display: inline-block;
-            vertical-align: middle;
-            line-height: 50px;
-            font-size: 16px;
+        .listTop {
+            padding: 10px 0;
+            border-bottom: 1px solid #f4f4f4;
+            font-weight: 600;
             color: #232323;
+            font-size: 15px;
         }
-        #div1 {
-            width:100px; height:100px;
-            background-color:black;
+        .nopass {
+            color: #f00;
+        }
+        .already {
+            color: #bbb;
+        }
+        .origin {
+            color: #FF7F35;
+        }
+        .green {
+            color: #2FB86C;
+        }
+        .blue {
+            color: #3186DB;
+        }
+        .listMiddle {
+            font-size: 15px;
+            padding: 16px 0;
+        }
+        .flexLeft {
+            display: flex;
+        }
+        .applayIcon {
+            vertical-align: middle;
+            height: 47px;
+            width: 47px;
+            padding-right: 6px;
+        }
+        .info {
+            line-height: 22px;
+            font-size: 14px;
+            color: #696969;
+        }
+        .infoText{
+            padding: 5px 0;
+        }
+        .flexRight {
+            /*line-height: 60px;*/
+            position: relative;
+        }
+        .godetail {
+            height: 18px;
+            width: 12px;
+            display: inline-block;
+            vertical-align: middle;
+            position: absolute;
+            bottom: 5px;
+            right: 0;
+        }
+        .goSub {
+            position: absolute;
+            display: inline-block;
+            height: 30px;
+            width: 70px;
+            line-height: 30px;
+            text-align: center;
+            right: 0;
+            background: #096FD4;
+            color: #fff;
+            border-radius: 4px;
+            font-size: 14px;
+            top: 0;
         }
     </style>
     <script src="./js/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="./js/commen.js" type="text/javascript" charset="utf-8"></script>
 </head>
 <body>
-<input type="button" id="btnSlideDown" value="下拉"/>
-<input type="button" id="btnSlideUp" value="收起"/>
-<input type="button" id="btnTotal" value="合成"/>
-<div id="div1"></div>
-<div id="home">
+<div style="background: #f4f4f4;min-height:100vh;">
+    <div class="scroll" style="display:block">
 
+    </div>
+    <div class="nodataBox" style="display:none;margin: 0 auto;padding-top: 100px;text-align: center;color: #f00;font-weight: 600;font-size: 18px;">
+        您还没有申请记录
+    </div>
 </div>
 </body>
 <script>
-    $(function() {
-        //下拉按钮
-        $('#btnSlideDown').click(function(){
-            //$('#div1').slideDown();
-            $('#div1').slideDown(200);  //1000毫秒，表示动画下拉过程时间。
-        });
-
-        //收起按钮
-        $('#btnSlideUp').click(function(){
-            //$('#div1').slideUp();
-            $('#div1').slideUp(200);
-        });
-
-        //合成按钮
-        $('#btnTotal').click(function(){
-            //$('#div1').slideToggle();
-            $('#div1').slideToggle(1000);
-        });
-    });
-
-
-
-
-
+    var phone = '';
     $(function(){
-
-
-
-        var  listdata = [
-            {'name':'预约申请',icon:'./images/shenqing.png',router: './userinfo.html'},
-            {'name':'历史申请记录',icon:'./images/liebiao.png',router: './applayList.html'}];
-        var str = '';
-        for(let item of listdata){
-            str+='<div class="homeList flexBetween" onclick="goRouter(this)" data-router='+item.router+'><span>'+item.name+'</span><img src='+item.icon+'></div>'
+        if(localStorage.getItem('phone')){
+            phone = localStorage.getItem('phone');
         }
-        $("#home").append($(str))
+        getDataList();
     })
-    function goRouter(even){
-        console.log($(even).attr("data-router"))
-        window.location.href = $(even).attr("data-router")
+    function getDataList() {
+        var listdata = [{
+            auditStatus: 1,
+            applyTime: '2014-444',
+            applyNum:999999,
+            sex: '女',
+            name:'ddddd',
+            companyName: '带队',
+            cardNum: '55555'
+        },
+            {
+                auditStatus: 2,
+                applyTime: '2014-444',
+                applyNum:999999,
+                sex: '女',
+                name:'ddddd',
+                companyName: '带队',
+                cardNum: '55555'
+            }]
+        var str = '';
+        for(var i = 0;i< listdata.length;i++) {
+            if (listdata[i].auditStatus == 1) {
+                listdata[i].audit = '待审核';
+                listdata[i].className = 'origin';
+            }
+            if (listdata[i].auditStatus == 2) {
+                listdata[i].audit = '审核不通过';
+                listdata[i].className = 'nopass';
+            }
+            if (listdata[i].auditStatus == 3) {
+                listdata[i].audit = '审核通过';
+                listdata[i].className = 'already';
+            }
+            str += ' <div class="listBox">' +
+                '<div class="flexBetween listTop"> ' +
+                '<span>' + listdata[i].applyTime + '</span><span class="applyStatus '+ listdata[i].className +'">' + listdata[i].audit + '</span>' +
+                '</div>' +
+                '<div class="listMiddle flexBetween"' +
+                'onclick="goDetail(' + listdata[i].applyNum + ')">' +
+                '<div class="flexLeft">' +
+                '<div class="info">' +
+                '<div class="flexBetween infoText">' +
+                '<p>姓名：' + listdata[i].name + '</p>' +
+                ' <span >性别： ' + listdata[i].sex + '</span>' +
+                '</div>' +
+                '<p class="idCard infoText" >身份证号：' + listdata[i].cardNum + '</p>' +
+                '<p class="companyName infoText">单位名称：' + listdata[i].companyName +
+                '</p>' +
+                '</div>' +
+                '</div>' +
+                '<div class="flexRight">' +
+                '<img class="godetail" src="./images/right.png">' +
+                '</div>' +
+                '</div>' +
+                '</div>'
+        }
+            $('.scroll').append($(str));
+        var data = {
+            phoneNum: phone
+        }
+        data = JSON.stringify(data);
+        $.ajax({
+            url: ajaxUrl + 'getApplyList',
+            timeout: 3000,
+            type: 'post',
+            contentType: 'application/json;charset=utf-8',
+            dataType: "json",
+            data:data,
+            success: function(response) {
+                if(response.rescode == 200){
+                    var listdata = response.data.applyList;
+                    if (response.data.applyList.length != 0) {
+                        $(".nodataBox").css({'display':'none'});
+                        $(".scroll").css({'display':'block'});
+                        var str = '';
+                        for(var i = 0;i< listdata.length;i++){
+                            if(listdata[i].auditStatus == 1){
+                                listdata[i].audit = '待审核'
+                            }
+                            if(listdata[i].auditStatus == 2){
+                                listdata[i].audit = '审核不通过'
+                            }
+                            if(listdata[i].auditStatus == 3){
+                                listdata[i].audit = '审核通过'
+                            }
+                            str+=' <div class="listBox">' +
+                                '<div class="flexBetween listTop"> ' +
+                                '<span>'+listdata[i].applyTime+'</span><span class="applyStatus origin">'+listdata[i].audit+'</span>' +
+                                '</div>' +
+                                '<div class="listMiddle flexBetween"' +
+                                'onclick="goDetail('+listdata[i].applyNum+')">' +
+                                '<div class="flexLeft">' +
+                                '<div class="info">' +
+                                '<div class="flexBetween infoText">' +
+                                '<p>姓名：'+listdata[i].name+'</p>' +
+                                ' <span >性别： '+listdata[i].sex+'</span>' +
+                                '</div>' +
+                                '<p class="idCard infoText" >身份证号：'+listdata[i].cardNum+'</p>' +
+                                '<p class="companyName infoText">单位名称：'+listdata[i].companyName+
+                                '</p>' +
+                                '</div>' +
+                                '</div>' +
+                                '<div class="flexRight">' +
+                                '<img class="godetail" src="./images/right.png">' +
+                                '</div>' +
+                                '</div>' +
+                                '</div>'
+                            $('.scroll').append($(str));
+                        }
+                    }
+                    if (listdata.length == 0 ) {
+                        $(".nodataBox").css({'display':'block'});
+                        $(".scroll").css({'display':'none'})
+                    }
+                }else{
+                    $(".nodataBox").css({'display':'block'});
+                    $(".scroll").css({'display':'none'})
+                    tanwin(response.data.resdes)
+                }
+            },
+            error: function(XMLHttpRequest, textStatus, errorThrown) {
+            },
+            complete : function(XMLHttpRequest,status){ //请求完成后最终执行参数
+            }
+        });
     }
+    function goDetail(applyNum){
+        window.location.href = './applyDetail.html?'+applyNum;
+    }
+
 </script>
 </html>
