@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <link rel="stylesheet" type="text/css" href="./css/reset.css">
+    <link rel="stylesheet" type="text/css" href="LCalendar/css/LCalendar.css" />
+    <title>填写信息</title>
+    <style >
+        .success {
+            width: 100%;
+            overflow: hidden;
+            text-align: center;
+            margin: 30px auto;
+            background: #fff;
+        }
+        .sucessIcon{
+            height:100px;
+            width:100px;
+            text-align: center;
+        }
+        .sucessText{
+            color:#232323;
+            font-size:15px;
+            width:70%;
+            margin: 30px auto;
+        }
+        .sureButton{
+            margin: 30px auto;
+            text-align: center;
+            background: #0076FF;
+            color: #fff;
+            border-radius: 20px;
+            width: 160px;
+            height: 45px;
+            line-height: 45px;
+        }
+        </style>
+</head>
+<body>
+<div class="success">
+    <img class="sucessIcon" src="./images/applaySucess.png">
+    <p class="sucessText">
+        恭喜您身份认证通过，等待受访人审核中。
+        您可至历史详情查看进度
+    </p>
+    <div class="sureButton" @click="goHome">确定</div>
+</div>
+</body>
+</html>

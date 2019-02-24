@@ -80,7 +80,7 @@
         .infoBox .inputText{
             color: #929292;
             font-family: "\5FAE\8F6F\96C5\9ED1",PingFang SC, Microsoft YaHei UI, Microsoft YaHei, Arial, sans-serif;
-            width: 59%;
+            width: 62%;
             font-size:14px;
             text-indent: 4px;
             text-align: right;
@@ -199,6 +199,17 @@
             color: #f00;
             cursor: pointer;
         }
+        .submitInfo{
+            margin: 20px auto;
+            text-align: center;
+            background: #0076FF;
+            color: #fff;
+            border-radius: 20px;
+            width: 160px;
+            height: 45px;
+            line-height: 45px;
+
+        }
 
     </style>
 </head>
@@ -262,7 +273,7 @@
             <span class="lableTextIcon">*</span>
             <span class="lableText">到访事由 :</span>
         </div>
-        <input class='inputText' type="text" v-model="userinfo.reason" placeholder="请输入到访事由"/>
+        <input class='inputText' type="text" id="reason" placeholder="请输入到访事由"/>
     </div>
     <div class="infoBox flexBetween">
         <div class="inputLeft">
@@ -301,11 +312,8 @@
     <div class="infoBox flexBetween carTable " style="display: none;">
         <div class="inputLeft"></div>
         <div style="margin-left: 30%;">
-            <table class="carTableBox">
-                <!--<tr v-for="(item,index) in carData">-->
-                    <!--<td>{{item}}</td>-->
-                    <!--<td @click="deleteItem(item,index)">删除</td>-->
-                <!--</tr>-->
+            <table class="carTableBox" id="carBox">
+
             </table>
         </div>
     </div>
@@ -317,7 +325,7 @@
             <span class="addInfo addCarInfo">添加</span>
         </div>
     </div>
-    <div class="infoBox" id='carCode' style="position: relative;border:none;padding: 0;">
+    <div class="infoBox" id='carCode' style="position: relative;border:none;padding: 0;display: none;">
         <div class="carcodeBox">
             <div class="carCode">
                 <ul id="title" class="title">
@@ -338,7 +346,7 @@
     <div class="infoBox flexBetween">
         <div class="inputLeft">
             陪同人信息 :</div>
-        <div style="min-width: 70%;">
+        <div style="min-width: 70%;text-align: left;">
             <input class='inputText' style="text-align: left;" id="personName" type="text" placeholder="请输入陪同人姓名">
             <!--<span class="addInfo"></span>-->
         </div>
@@ -346,14 +354,14 @@
     <div class="infoBox flexBetween">
         <div class="inputLeft"></div>
         <div style="min-width: 70%;">
-            <input class='inputText' type="text" id='personIdnum' placeholder="请输入陪同人身份证号">
+            <input class='inputText' style="text-align: left" type="text" id='personIdnum' placeholder="请输入陪同人身份证号">
             <span class="addInfo" onclick="addPerson()">添加</span>
         </div>
     </div>
-    <div class="infoBox flexBetween" >
+    <div class="infoBox flexBetween personTable" style="display: none;" >
         <div class="inputLeft"></div>
         <div style="min-width: 90%;">
-            <table class="carBox" id="carBox">
+            <table class="carBox" id="personBox">
 
             </table>
         </div>
@@ -432,7 +440,6 @@
         numData = ['1','2','3','4','5','6','7','8','9','0','A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','R','U','V','W','X','Y','Z','学','警','领','港','澳','试','挂','临']
         carId = '',
         carData = [],
-        entourageList = [];
         window.onbeforeunload = function(event) {
             localStorage.removeItem('phone')
         }
@@ -473,7 +480,7 @@
                     }
                 }
             }else{
-                Toast("检测失败，请重新检测")
+                tanwin("检测失败，请重新检测")
             }
         });
         $("#shoufangperson").bind("input", function () {
@@ -532,21 +539,18 @@
             $('#carCode').css({'display':'none'})
         })
         $(".addCarInfo").on("click",function(){
-            if(carData.length != 0){
                 $(".carTable").css({'display':"block"})
-            }
-            if(carData.length ==5){
+            if($("#carBox").find('tr').length == 5){
                 tanwin(" 车辆最多可添加5辆");
                 return;
             }
             var carNUm = $(".showCarText").text();
             if(carNUm){
-                if (carNUm.length == 7){
-                        carData.push(carNUm);
+                if (carNUm.length == 7 || carNUm.length == 8){
                         carId = '';
                         $(".showCarText").text('请输入车牌号');
-                        var str = '<tr><td>'+carNUm+'</td><td data-id="'+carNUm+'" onclick="deleteItem(this)">删除</td></tr>'
-                        $(".carTableBox").append($(str))
+                        var str = '<tr><td>'+carNUm+'</td><td data-id="'+carNUm+'" onclick="deletePerson(this)">删除</td></tr>'
+                        $(".carTableBox").append($(str)).change();
                 }else{
                     tanwin(" 请输入正确车牌号");
                 }
@@ -555,8 +559,9 @@
             }
         })
     })
-    function deleteItem(ev){
-        $(ev.target).parent().remove();
+    $(".carTableBox").bind("change", change());
+    function change(){
+        console.log($("#carBox").find('tr').length)
     }
     function getNameList(name){
         var data = {
@@ -623,9 +628,10 @@
         });
     }
     function addPerson(){
+            $(".personTable").css({'display':'block'})
             var companyName = $("#personName").val();
             var companyCard = $("#personIdnum").val();
-        if(entourageList.length ==5){
+        if($("#personBox").find('tr').length ==5){
             tanwin("陪同人最多可添加5人");
             return;
         }
@@ -640,29 +646,31 @@
             tanwin('请输入陪同人身份证号');
             return;
         }
-        var obj = {
-            name: companyName,
-            cardNum:companyCard
-        }
-        entourageList.push(obj);
-        console.log(entourageList)
         var str='';
         str+='<tr> <td>'+companyName+'</td><td>'+companyCard+'</td><td onClick="deletePerson(this)"">删除</td></tr>';
-        companyName = '';
-        companyCard = '';
-        $("#carBox").append($(str))
+        $("#personName").val('');
+        $("#personIdnum").val('')
+        $("#personBox").append($(str))
     }
     function deletePerson(el){
-        $(e.target).parent().remove()
+        console.log(el)
+        $(el).parent().remove();
+        if($("#carBox").find('tr').length ==0){
+            $(".carTable").css({'display':"none"})
+        }
+        if($("#personBox").find('tr').length ==0){
+            $(".personTable").css({'display':'none'})
+        }
     }
-    function submit(){
-        window.postMessage('success');
-    }
+//    function submit(){
+//        window.postMessage('success');
+//    }
     function getName(ev){
         var val = $(ev).text()
         $("#shoufangperson").val(val)
         $(".enquiries-ul").empty()//清空ul元素内容
         $(".ulList").css({"display":'none'})
+
     }
     function selectItem(ev){
         if(carId.length == 7){
@@ -671,6 +679,146 @@
             carId+=$(ev).text();
             $('.showCarText').text(carId)
         }
+    }
+    function submit(){
+        userinfo.company = $("#company").val();
+        userinfo.department = $("#department").val();
+        userinfo.respondent = $("#shoufangperson").val();
+        userinfo.applicantCompaney = $("#applicantCompaney").val();
+        userinfo.applicant = $("#applicant").val();
+        userinfo.idCard = $("#idCard").val();
+        userinfo.reason = $("#reason").val();
+        userinfo.startTime = $("#start_date").val();
+        userinfo.endTime = $("#end_date").val();
+        var obj = {};
+        userinfo.entourageList = [];
+        for(var i = 0;i<$("#personBox").find('tr').length;i++){
+            console.log($($("#personBox").find('tr')[i]).find('td')[0])
+            obj.name = $($("#personBox").find('tr')[i]).find('td')[0].innerHTML;
+            obj.cardNum = $($("#personBox").find('tr')[i]).find('td')[1].innerHTML
+            userinfo.entourageList.push(obj)
+        }
+        if(!userinfo.company){
+            tanwin("请选择受访单位");
+            return
+        }
+        if(userinfo.department == ''){
+            tanwin("请选择受访部门");
+            return
+        }
+        if(userinfo.respondent == ''){
+            tanwin("请输入受访人");
+            return
+        }
+        if(userinfo.applicantCompaney == ''){
+            tanwin("请输入申请单位");
+            return
+        }
+        if(userinfo.applicant == ''){
+            tanwin("请输入申请人姓名");
+            return
+        }
+        if(userinfo.idCard == ''){
+            tanwin("请输入身份证号");
+            return
+        }
+        if(!(Patterns.idNum.test(userinfo.idCard))){
+            tanwin('请输入正确身份证号')
+            return
+        }
+        if(userinfo.reason == ''){
+            tanwin("请输入到访事由");
+            return
+        }
+        if(userinfo.startTime == ''){
+            tanwin("请输入到访时间");
+            return
+        }
+        if(userinfo.endTime == ''){
+            tanwin("请输入结束时间");
+            return
+        }
+        if(isSelect){
+            userinfo.isCar = '1';
+        }
+        if(isSelectOne){
+            userinfo.isCar = '2';
+        }
+        carData = [];
+        for(var i = 0;i<$("#carBox").find('tr').length;i++){
+            carData.push($($("#carBox").find('tr')[i]).find('td')[0].innerHTML)
+        }
+        if(userinfo.isCar == '1'){
+            if(carData.length == 0){
+                tanwin("请输入车牌号");
+                return
+            }
+        }
+        userinfo.licenseNum = carData.join(",");
+        var data = {
+            companyCode: userinfo.company,
+            deptCode: userinfo.department,
+            acceptName:  userinfo.respondent
+        }
+        data = JSON.stringify(data);
+        $.ajax({
+            url: ajaxUrl + 'checkInfo',
+            timeout: 3000,
+            type: 'post',
+            contentType: 'application/json;charset=utf-8',
+            dataType: "json",
+            data:data,
+            success: function(response) {
+                if(response.rescode == 200){
+                    window.postMessage('success');
+                }else{
+                    tanwin(response.data.resdes)
+                }
+            },
+            error: function(XMLHttpRequest, textStatus, errorThrown) {
+            },
+            complete : function(XMLHttpRequest,status){ //请求完成后最终执行参数
+            }
+        });
+    }
+    function sureJump(){
+        var data = {
+            phoneNum: phone,
+            companyCode: userinfo.company,
+            deptCode: userinfo.department,
+            acceptName:userinfo.respondent,
+            name: userinfo.applicant,
+            cardNum: userinfo.idCard,
+            companyName: userinfo.applicantCompaney,
+            reason: userinfo.reason,
+            startTime: userinfo.startTime,
+            endTime: userinfo.endTime,
+            carFlag: userinfo.isCar,
+            licenseNum: userinfo.licenseNum,
+            photoData: userinfo.chapterUrl,//待确认
+            entourageList: userinfo.entourageList
+        }
+        data = JSON.stringify(data);
+        $.ajax({
+            url: ajaxUrl + 'submitInfo',
+            timeout: 3000,
+            type: 'post',
+            contentType: 'application/json;charset=utf-8',
+            dataType: "json",
+            data:data,
+            success: function(response) {
+                if(response.rescode == 200){
+                    window.location.href = './sucess.html'
+
+                }else{
+                    tanwin(response.data.resdes)
+                }
+            },
+            error: function(XMLHttpRequest, textStatus, errorThrown) {
+            },
+            complete : function(XMLHttpRequest,status){ //请求完成后最终执行参数
+            }
+        });
     }
 </script>
 </html>
