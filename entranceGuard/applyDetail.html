@@ -68,19 +68,19 @@
             <p class="shoufangInfo">到访事由 : <span class="reason"></span></p>
             <p class="shoufangInfo">到访时间 : <span class="startTime"></span></p>
             <p class="shoufangInfo">结束时间 : <span class="endTime"></span></p>
-            <p class="shoufangInfo"  id="hasCar">是否携带车辆 : <span class="licenseNum"></span></p>
-            <p class="shoufangInfo" id="noCar">是否携带车辆 : 否</p>
-            <div class='peitong' v-if="entourageList.length != 0">
-                <span>陪同人 : </span>
-                <div class="personInfo">
-                    <p v-for="item in userInfo.entourageList"></p>
+            <p class="shoufangInfo"  id="hasCar" style="display: none;">是否携带车辆 : <span class="licenseNum"></span></p>
+            <p class="shoufangInfo" id="noCar" style="display: none;">是否携带车辆 : 否</p>
+            <div id="peitong" style="display:none;">
+                <div class='peitong'>
+                    <span style="min-width: 50px;display: inline-block;">陪同人 : </span>
+                    <div class="personInfo">
+
+                    </div>
                 </div>
             </div>
             <div class='peitong flexBetween'>
-                <span v-if="userInfo.auditStatus == 1">状态 : 待审核</span>
-                <span v-if="userInfo.auditStatus == 2">状态 : 审核不通过</span>
-                <span v-if="userInfo.auditStatus == 3">状态 : 审核通过</span>
-                <div class="reApplay" v-if="userInfo.auditStatus == 2" @click="goInfo">
+                <span class="statiusText"></span>
+                <div class="reApplay" style="display: none;" onclick="goInfo()">
                     重新申请
                 </div>
             </div>
@@ -97,8 +97,10 @@
         }
         getDataDetail()
     })
+    function goInfo(){
+        window.location.href='./userinfo.html'
+    }
     function getDataDetail(){
-        console.log(5555)
         var userInfo={
             acceptCompanyName: 'eeeee',
             deptName: 'dddd',
@@ -110,27 +112,52 @@
             endTime: 'dddd',
             startTime: 'ddd',
             photoUrl: '',
-            carFlag: 1
+            carFlag: 1,
+            entourageList: [
+                {name: '方法v',
+                    cardNum: '44444444'
+                },
+                {name: '方法v',
+                    cardNum: '44444444'
+                }
+            ],
+            licenseNum: '444444',
+            auditStatus: 3
         };
         $(".acceptCompanyName").html(userInfo.acceptCompanyName)
-        console.log( $(".acceptCompanyName").html())
         $(".deptName").html(userInfo.deptName);
         $(".acceptName").html(userInfo.acceptName);
         $(".acceptPhone").html(userInfo.acceptPhone);
         $(".name").html(userInfo.name)
-
         $(".cardNum").html(userInfo.cardNum)
         $(".reason").html(userInfo.reason);
         $(".startTime").html(userInfo.startTime);
         $(".endTime").html(userInfo.endTime);
-//        $(".imgInfo").css({"backgroundImage:"+userInfo.photoUrl});
+        $(".imgInfo").css({"backgroundImage":userInfo.photoUrl});
         if(userInfo.carFlag == 1){
             $("#hasCar").css({'display':'block'});
             $(".licenseNum").html(userInfo.licenseNum);
         }
         if(userInfo.carFlag == 2){
             $("#noCar").css({'display':'block'});
-
+        }
+        if(userInfo.entourageList.length != 0){
+            $("#peitong").css({"display":'block'});
+            var str = '';
+            for(var i=0;i<userInfo.entourageList.length;i++){
+                str+='<p class="peitongBox"><span>'+userInfo.entourageList[i].name+'&nbsp;&nbsp;'+ userInfo.entourageList[i].cardNum+'</span></p>'
+            }
+            $(".personInfo").append($(str))
+        }
+        if(userInfo.auditStatus == 1){
+            $(".statiusText").html("状态 : 待审核")
+        }
+        if(userInfo.auditStatus == 2){
+            $(".statiusText").html("状态 : 审核不通过")
+        }
+        if(userInfo.auditStatus == 3){
+            $(".statiusText").html("状态 : 审核通过");
+            $(".reApplay").css({"display": 'block'});
         }
         var data = {
             applyNum: 'tttttttt'
@@ -152,21 +179,36 @@
                     $(".acceptName").html(userInfo.acceptName);
                     $(".acceptPhone").html(userInfo.acceptPhone);
                     $(".name").html(userInfo.name)
-
                     $(".cardNum").html(userInfo.cardNum)
                     $(".reason").html(userInfo.reason);
                     $(".startTime").html(userInfo.startTime);
                     $(".endTime").html(userInfo.endTime);
-//                    $(".imgInfo").css({"backgroundImage:"userInfo.photoUrl});
+                   $(".imgInfo").css({"backgroundImage":userInfo.photoUrl});
                     if(userInfo.carFlag == 1){
                         $("#hasCar").css({'display':'block'});
                         $(".licenseNum").html(userInfo.licenseNum);
                     }
                     if(userInfo.carFlag == 2){
                         $("#noCar").css({'display':'block'});
-
                     }
-//                    this.entourageList = this.userInfo.entourageList;
+                    if(userInfo.entourageList.length != 0){
+                        $("#peitong").css({"display":'block'});
+                        var str = '';
+                        for(var i=0;i<userInfo.entourageList.length;i++){
+                            str+='<p class="peitongBox"><span>'+userInfo.entourageList[i].name+'&nbsp;&nbsp;'+ userInfo.entourageList[i].cardNum+'</span></p>'
+                        }
+                        $(".personInfo").append($(str))
+                    }
+                    if(userInfo.auditStatus == 1){
+                        $(".statiusText").html("状态 : 待审核")
+                    }
+                    if(userInfo.auditStatus == 2){
+                        $(".statiusText").html("状态 : 审核不通过")
+                    }
+                    if(userInfo.auditStatus == 3){
+                        $(".statiusText").html("状态 : 审核通过");
+                        $(".reApplay").css({"display": 'block'});
+                    }
                 }else{
                     tanwin(response.data.resdes)
                 }
