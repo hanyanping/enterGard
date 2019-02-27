@@ -320,8 +320,8 @@
     <div class="infoBox"  id="carSpan">
         <div class="inputLeft"></div>
         <div style="min-width: 70%;margin-left: 28%;">
-            <span class='inputText showCarText'  style="text-align: left;display:inline-block;min-width: 62%;" onclick="$('#carCode').css({'display':'block'})">请输入车牌号</span>
-            <span class="deletIcon" onclick="$('.showCarText').html('请输入车牌号');carId = ''">x</span>
+            <span class='inputText showCarText'  style="text-align: left;display:inline-block;min-width: 62%;" ontouchend="$('#carCode').css({'display':'block'})">请输入车牌号</span>
+            <span class="deletIcon" ontouchend="$('.showCarText').html('请输入车牌号');carId = ''">x</span>
             <span class="addInfo addCarInfo">添加</span>
         </div>
     </div>
@@ -355,7 +355,7 @@
         <div class="inputLeft"></div>
         <div style="min-width: 70%;">
             <input class='inputText' style="text-align: left" type="text" id='personIdnum' placeholder="请输入陪同人身份证号">
-            <span class="addInfo" onclick="addPerson()">添加</span>
+            <span class="addInfo" ontouchend="addPerson()">添加</span>
         </div>
     </div>
     <div class="infoBox flexBetween personTable" style="display: none;" >
@@ -367,7 +367,7 @@
         </div>
     </div>
 
-    <div class="submitInfo" onclick="submit()">提交并进行活体检测</div>
+    <div class="submitInfo" ontouchend="submit()">提交并进行活体检测</div>
 </div>
 <div id="tanwin" class="tan" style="display:none;"></div>
 </body>
@@ -527,26 +527,27 @@
         tab(".carcodeBox ");
         var strProvince = '';
         for(let item of provinceData){
-            strProvince+=' <a class="province"  onclick="selectItem(this)">'+item+'</a>'
+            strProvince+=' <a class="province"  ontouchend="selectItem(this)">'+item+'</a>'
         }
         $(".provinceBox").append(strProvince);
         var strNumber = '';
         for(let item of numData){
-            strNumber+=' <a class="province"  onclick="selectItem(this)">'+item+'</a>'
+            strNumber+=' <a class="province"  ontouchend="selectItem(this)">'+item+'</a>'
         }
         $(".numberBox").append(strNumber);
         $(".sureCar").on("click",function(){
             $('#carCode').css({'display':'none'})
         })
-        $(".addCarInfo").on("click",function(){
-                $(".carTable").css({'display':"block"})
+        $(".addCarInfo").on("touchend",function(){
+
             if($("#carBox").find('tr').length == 5){
                 tanwin(" 车辆最多可添加5辆");
                 return;
             }
             var carNUm = $(".showCarText").text();
-            if(carNUm){
+            if(carNUm != '请输入车牌号'){
                 if (carNUm.length == 7 || carNUm.length == 8){
+                    $(".carTable").css({'display':"block"})
                         carId = '';
                         $(".showCarText").text('请输入车牌号');
                         var str = '<tr><td>'+carNUm+'</td><td data-id="'+carNUm+'" onclick="deletePerson(this)">删除</td></tr>'
@@ -647,7 +648,7 @@
             return;
         }
         var str='';
-        str+='<tr> <td>'+companyName+'</td><td>'+companyCard+'</td><td onClick="deletePerson(this)"">删除</td></tr>';
+        str+='<tr> <td>'+companyName+'</td><td>'+companyCard+'</td><td ontouchend="deletePerson(this)"">删除</td></tr>';
         $("#personName").val('');
         $("#personIdnum").val('')
         $("#personBox").append($(str))
@@ -673,7 +674,7 @@
 
     }
     function selectItem(ev){
-        if(carId.length == 7){
+        if(carId.length == 7 || carId.length == 8){
 
         }else{
             carId+=$(ev).text();
