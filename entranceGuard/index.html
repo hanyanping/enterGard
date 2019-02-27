@@ -50,34 +50,6 @@
         });
     }
     $(function(){
-        var a = [{name:'haha1',plan:[{planId:1,value: 'dddd1'},{planId:2,value: 'dddd2'},{planId:3,value: 'dddd3'}]},{name:'haha2',plan:[{planId:1,value: 'dddd'},{planId:2,value: 'dddd'},{planId:3,value: 'dddd'}]},{name:'haha3',plan:[{planId:1,value: 'dddd'},{planId:2,value: 'dddd'},{planId:3,value: 'dddd'}]},{name:'haha4',plan:[{planId:1,value: 'dddd'},{planId:2,value: 'dddd'},{planId:3,value: 'dddd'}]}];
-        var b = [{id:1,name:'方案一'},{id:2,name:'方案二'},{id:3,name:'方案三'}];
-        var c = [];
-        for(var j = 0;j < b.length; j++){
-            var obj = {
-                id: '',
-                name: '',
-                content:[],
-            };
-            obj.name = b[j].name;
-            for(var i = 0;i<a.length;i++){
-                var obj1 = {//value
-                    name:'',
-                    value: ''
-                }
-                obj1.name = a[i].name;
-                for(var k = 0;k< a[i].plan.length; k++){
-                    console.log(i,k)
-                    if(b[j].id == a[i].plan[k].planId){
-                        obj1.value = a[i].plan[k].value;
-                        obj.content.push(obj1)
-                        break;
-                    }
-                }
-            }
-            c.push(obj)
-        }
-        console.log(c)
         var  listdata = [
             {'name':'预约申请',icon:'./images/shenqing.png',router: './userinfo.html'},
             {'name':'历史申请记录',icon:'./images/liebiao.png',router: './applayList.html'}];
