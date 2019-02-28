@@ -41,15 +41,18 @@
 </div>
 </body>
 <script>
-    window.onload = function() {
-        document.addEventListener('message', function(msg) {
-            var data = JSON.parse(msg.data)
-            if(data.hasOwnProperty('phoneNum')){
-                localStorage.setItem('phone',data.phoneNum)
-            }
-        });
-    }
+    // window.onload = function() {
+    //     document.addEventListener('message', function(msg) {
+    //         var data = JSON.parse(msg.data)
+    //         if(data.hasOwnProperty('phoneNum')){
+    //             localStorage.setItem('phone',data.phoneNum)
+    //             alert(data.phoneNum)
+    //         }
+    //     });
+    // }
+    window.location.href = 'https://www.baidu.com'
     $(function(){
+        window.location.href = 'https://www.baidu.com'
         var  listdata = [
             {'name':'预约申请',icon:'./images/shenqing.png',router: './userinfo.html'},
             {'name':'历史申请记录',icon:'./images/liebiao.png',router: './applayList.html'}];

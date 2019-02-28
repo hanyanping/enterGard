@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
     <meta name="viewport" content="initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
     <meta name="apple-mobile-web-app-capable" content="yes"/>
@@ -61,6 +60,7 @@
         .listName {
             position: relative;
             width: 59%;
+            right:15px;
         }
         .ulList li:hover{
             background: #bbb;
@@ -71,7 +71,7 @@
             text-align: center;
             background: #fff;
             width: 100px;
-            min-height: 30px;
+            min-height: 130px;
             max-height: 160px;
             overflow-y: scroll;
             border: 1px solid #f4f4f4;
@@ -240,7 +240,7 @@
             <span class="lableText">受访人 :</span>
         </div>
         <div class="listName">
-            <input class='inputText' style="width: 100%;"  type="text" id="shoufangperson" placeholder="请输入受访人姓名(全名)" @blur="checkRespondent"/>
+            <input class='inputText' style="width: 100%;padding-right:15px;"  type="text" id="shoufangperson" placeholder="请输入受访人姓名(全名)" @blur="checkRespondent"/>
             <div class="ulList" style="display: none;">
                 <ul class="enquiries-ul">
                 </ul>
@@ -320,8 +320,8 @@
     <div class="infoBox"  id="carSpan">
         <div class="inputLeft"></div>
         <div style="min-width: 70%;margin-left: 28%;">
-            <span class='inputText showCarText'  style="text-align: left;display:inline-block;min-width: 62%;" onclick="$('#carCode').css({'display':'block'})">请输入车牌号</span>
-            <span class="deletIcon" onclick="$('.showCarText').html('请输入车牌号');carId = ''">x</span>
+            <span class='inputText showCarText'  style="text-align: left;display:inline-block;min-width: 62%;" ontouchend="$('#carCode').css({'display':'block'})">请输入车牌号</span>
+            <span class="deletIcon" ontouchend="$('.showCarText').html('请输入车牌号');carId = ''">x</span>
             <span class="addInfo addCarInfo">添加</span>
         </div>
     </div>
@@ -355,7 +355,7 @@
         <div class="inputLeft"></div>
         <div style="min-width: 70%;">
             <input class='inputText' style="text-align: left" type="text" id='personIdnum' placeholder="请输入陪同人身份证号">
-            <span class="addInfo" onclick="addPerson()">添加</span>
+            <span class="addInfo" ontouchend="addPerson()">添加</span>
         </div>
     </div>
     <div class="infoBox flexBetween personTable" style="display: none;" >
@@ -367,7 +367,7 @@
         </div>
     </div>
 
-    <div class="submitInfo" onclick="submit()">提交并进行活体检测</div>
+    <div class="submitInfo" ontouchend="submit()">提交并进行活体检测</div>
 </div>
 <div id="tanwin" class="tan" style="display:none;"></div>
 </body>
@@ -527,18 +527,18 @@
         tab(".carcodeBox ");
         var strProvince = '';
         for(let item of provinceData){
-            strProvince+=' <a class="province"  onclick="selectItem(this)">'+item+'</a>'
+            strProvince+=' <a class="province"  ontouchend="selectItem(this)">'+item+'</a>'
         }
         $(".provinceBox").append(strProvince);
         var strNumber = '';
         for(let item of numData){
-            strNumber+=' <a class="province"  onclick="selectItem(this)">'+item+'</a>'
+            strNumber+=' <a class="province"  ontouchend="selectItem(this)">'+item+'</a>'
         }
         $(".numberBox").append(strNumber);
-        $(".sureCar").on("click",function(){
+        $(".sureCar").on("touchend",function(){
             $('#carCode').css({'display':'none'})
         })
-        $(".addCarInfo").on("click",function(){
+        $(".addCarInfo").on("touchend",function(){
                 $(".carTable").css({'display':"block"})
             if($("#carBox").find('tr').length == 5){
                 tanwin(" 车辆最多可添加5辆");
@@ -549,7 +549,7 @@
                 if (carNUm.length == 7 || carNUm.length == 8){
                         carId = '';
                         $(".showCarText").text('请输入车牌号');
-                        var str = '<tr><td>'+carNUm+'</td><td data-id="'+carNUm+'" onclick="deletePerson(this)">删除</td></tr>'
+                        var str = '<tr><td>'+carNUm+'</td><td data-id="'+carNUm+'" ontouchend="deletePerson(this)">删除</td></tr>'
                         $(".carTableBox").append($(str)).change();
                 }else{
                     tanwin(" 请输入正确车牌号");
@@ -582,7 +582,7 @@
                         $(".ulList").css({"display":'block'});
                         var str = '';
                         for(var item of acceptNameList){
-                            str+='<li class="ulListli" onclick="getName(this)"  data-name="'+item.name+'">'+item.name+'</li>'
+                            str+='<li class="ulListli" ontouchend="getName(this)"  data-name="'+item.name+'">'+item.name+'</li>'
                         }
                         $(".ulList").find('ul').html($(str));
                     }
@@ -647,7 +647,7 @@
             return;
         }
         var str='';
-        str+='<tr> <td>'+companyName+'</td><td>'+companyCard+'</td><td onClick="deletePerson(this)"">删除</td></tr>';
+        str+='<tr> <td>'+companyName+'</td><td>'+companyCard+'</td><td ontouchend="deletePerson(this)"">删除</td></tr>';
         $("#personName").val('');
         $("#personIdnum").val('')
         $("#personBox").append($(str))
