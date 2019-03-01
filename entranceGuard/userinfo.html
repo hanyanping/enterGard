@@ -210,7 +210,21 @@
             line-height: 45px;
 
         }
-
+        .zhegaiceng {
+            height: 100vh;
+            width: 100%;
+            position: fixed;
+            top: 0;
+            background: rgba(0, 0, 0, 0.4);
+        }
+        .zhegaiceng .lodingimg {
+            position: absolute;
+            height: 60px;
+            width: 60px;
+            left: 0;
+            right: 0;
+            margin: 30vh auto;
+        }
     </style>
 </head>
 <body style="">
@@ -369,6 +383,9 @@
 
     <div class="submitInfo" ontouchend="submit()">提交并进行活体检测</div>
 </div>
+<div class="zhegaicengone zhegaiceng" style="display: none;">
+    <img class='lodingimg' src="./images/loadingpop.gif">
+</div>
 <div id="tanwin" class="tan" style="display:none;"></div>
 </body>
 <script src="./js/jquery.min.js" type="text/javascript" charset="utf-8"></script>
@@ -415,7 +432,7 @@
 </script>
 <script>
 
-    var phone = '17666143833',
+    var phone = '',
         userinfo = {
         company: '',
         department: '',
@@ -436,18 +453,21 @@
         deptList = [],
         acceptNameList = [],
         isSelect = true,
+        isSelectOne= false,
         provinceData = ['京','津','沪','渝','冀','晋','辽','吉','黑','苏','浙','皖','闽','赣','鲁','豫','鄂','湘','粤','琼','川','贵','云','陕','甘','青','藏','桂','蒙','宁','新','使','WJ'],
         numData = ['1','2','3','4','5','6','7','8','9','0','A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','R','U','V','W','X','Y','Z','学','警','领','港','澳','试','挂','临']
         carId = '',
         carData = [],
-        window.onbeforeunload = function(event) {
-            localStorage.removeItem('phone')
-        }
+        // window.onbeforeunload = function(event) {
+        //     localStorage.removeItem('phone')
+        // }
     $(function(){
         if(localStorage.getItem('phone')){
             phone = localStorage.getItem('phone');
         }
-        getCompany();
+        if(phone){
+            getCompany();
+        }
         $("#company").on("change",function(){
             userinfo.company = $(this).find('option:selected').val();
             if(userinfo.company){
@@ -471,11 +491,12 @@
         document.addEventListener('message', function(msg) {//获取客户端人脸识别数据
             var data = JSON.parse(msg.data);
             if(data){
+
                 if(data.hasOwnProperty('imageData')){
                     userinfo.chapterUrl = data.imageData;
                     localStorage.setItem("url",userinfo.chapterUrl)
                     if(userinfo.chapterUrl){
-                        isShowthree = true;
+                        $(".zhegaiceng").css({'display': 'block'})
                         sureJump()
                     }
                 }
@@ -609,7 +630,7 @@
             dataType: "json",
             data:data,
             success: function(response) {
-                if(response.rescode == 200){
+                if(response.rescode === '200'){
                     companyList = response.companyList;
                     var str='';
                     for(let item of companyList){
@@ -618,7 +639,7 @@
                     $("#company").append(str)
 
                 }else{
-                    tanwin(response.data.resdes)
+                    tanwin(response.resdes)
                 }
             },
             error: function(XMLHttpRequest, textStatus, errorThrown) {
@@ -691,6 +712,7 @@
         userinfo.startTime = $("#start_date").val();
         userinfo.endTime = $("#end_date").val();
         var obj = {};
+        var Patterns = /(^[1-9]\d{5}(18|19|([23]\d))\d{2}((0[1-9])|(10|11|12))(([0-2][1-9])|10|20|30|31)\d{3}[0-9Xx]$)|(^[1-9]\d{5}\d{2}((0[1-9])|(10|11|12))(([0-2][1-9])|10|20|30|31)\d{2}$)/;
         userinfo.entourageList = [];
         for(var i = 0;i<$("#personBox").find('tr').length;i++){
             console.log($($("#personBox").find('tr')[i]).find('td')[0])
@@ -722,7 +744,7 @@
             tanwin("请输入身份证号");
             return
         }
-        if(!(Patterns.idNum.test(userinfo.idCard))){
+        if(!(Patterns.test(userinfo.idCard))){
             tanwin('请输入正确身份证号')
             return
         }
@@ -741,9 +763,10 @@
         if(isSelect){
             userinfo.isCar = '1';
         }
-        if(isSelectOne){
+        if(!isSelect){
             userinfo.isCar = '2';
         }
+        console.log(isSelect,userinfo.isCar)
         carData = [];
         for(var i = 0;i<$("#carBox").find('tr').length;i++){
             carData.push($($("#carBox").find('tr')[i]).find('td')[0].innerHTML)
@@ -769,10 +792,11 @@
             dataType: "json",
             data:data,
             success: function(response) {
-                if(response.rescode == 200){
+
+                if(response.rescode === '200'){
                     window.postMessage('success');
                 }else{
-                    tanwin(response.data.resdes)
+                    tanwin(response.resdes)
                 }
             },
             error: function(XMLHttpRequest, textStatus, errorThrown) {
@@ -798,25 +822,27 @@
             photoData: userinfo.chapterUrl,//待确认
             entourageList: userinfo.entourageList
         }
+
         data = JSON.stringify(data);
         $.ajax({
             url: ajaxUrl + 'submitInfo',
-            timeout: 3000,
             type: 'post',
             contentType: 'application/json;charset=utf-8',
             dataType: "json",
             data:data,
             success: function(response) {
-                if(response.rescode == 200){
+                $(".zhegaiceng").css({'display': 'none'})
+                if(response.rescode === '200'){
                     window.location.href = './sucess.html'
-
                 }else{
-                    tanwin(response.data.resdes)
+                    tanwin(response.resdes)
                 }
             },
             error: function(XMLHttpRequest, textStatus, errorThrown) {
+                $(".zhegaiceng").css({'display': 'none'})
             },
             complete : function(XMLHttpRequest,status){ //请求完成后最终执行参数
+                $(".zhegaiceng").css({'display': 'none'})
             }
         });
     }

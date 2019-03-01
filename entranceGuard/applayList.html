@@ -106,64 +106,9 @@
         getDataList();
     })
     function getDataList() {
-        var listdata = [{
-            auditStatus: 1,
-            applyTime: '2014-444',
-            applyNum:999999,
-            sex: '女',
-            name:'ddddd',
-            companyName: '带队',
-            cardNum: '55555'
-        },
-            {
-                auditStatus: 2,
-                applyTime: '2014-444',
-                applyNum:999999,
-                sex: '女',
-                name:'ddddd',
-                companyName: '带队',
-                cardNum: '55555'
-            }]
-        var str = '';
-        for(var i = 0;i< listdata.length;i++) {
-            if (listdata[i].auditStatus == 1) {
-                listdata[i].audit = '待审核';
-                listdata[i].className = 'origin';
-            }
-            if (listdata[i].auditStatus == 2) {
-                listdata[i].audit = '审核不通过';
-                listdata[i].className = 'nopass';
-            }
-            if (listdata[i].auditStatus == 3) {
-                listdata[i].audit = '审核通过';
-                listdata[i].className = 'already';
-            }
-            str += ' <div class="listBox">' +
-                '<div class="flexBetween listTop"> ' +
-                '<span>' + listdata[i].applyTime + '</span><span class="applyStatus '+ listdata[i].className +'">' + listdata[i].audit + '</span>' +
-                '</div>' +
-                '<div class="listMiddle flexBetween"' +
-                'onclick="goDetail(' + listdata[i].applyNum + ')">' +
-                '<div class="flexLeft">' +
-                '<div class="info">' +
-                '<div class="flexBetween infoText">' +
-                '<p>姓名：' + listdata[i].name + '</p>' +
-                ' <span >性别： ' + listdata[i].sex + '</span>' +
-                '</div>' +
-                '<p class="idCard infoText" >身份证号：' + listdata[i].cardNum + '</p>' +
-                '<p class="companyName infoText">单位名称：' + listdata[i].companyName +
-                '</p>' +
-                '</div>' +
-                '</div>' +
-                '<div class="flexRight">' +
-                '<img class="godetail" src="./images/right.png">' +
-                '</div>' +
-                '</div>' +
-                '</div>'
-        }
-            $('.scroll').append($(str));
+        $('.scroll').html('');
         var data = {
-            phoneNum: phone
+            phoneNum: 17666143833
         }
         data = JSON.stringify(data);
         $.ajax({
@@ -175,12 +120,14 @@
             data:data,
             success: function(response) {
                 if(response.rescode == 200){
-                    var listdata = response.data.applyList;
-                    if (response.data.applyList.length != 0) {
+                    var listdata = response.applyList;
+                    console.log(listdata.length)
+                    if (response.applyList.length != 0) {
                         $(".nodataBox").css({'display':'none'});
                         $(".scroll").css({'display':'block'});
                         var str = '';
                         for(var i = 0;i< listdata.length;i++){
+                            console.log(listdata)
                             if(listdata[i].auditStatus == 1){
                                 listdata[i].audit = '待审核'
                             }
@@ -194,8 +141,7 @@
                                 '<div class="flexBetween listTop"> ' +
                                 '<span>'+listdata[i].applyTime+'</span><span class="applyStatus origin">'+listdata[i].audit+'</span>' +
                                 '</div>' +
-                                '<div class="listMiddle flexBetween"' +
-                                'onclick="goDetail('+listdata[i].applyNum+')">' +
+                                '<div class="listMiddle flexBetween" onclick=goDetail("'+listdata[i].applyNum+'")>' +
                                 '<div class="flexLeft">' +
                                 '<div class="info">' +
                                 '<div class="flexBetween infoText">' +
@@ -212,8 +158,8 @@
                                 '</div>' +
                                 '</div>' +
                                 '</div>'
-                            $('.scroll').append($(str));
                         }
+                        $('.scroll').append($(str));
                     }
                     if (listdata.length == 0 ) {
                         $(".nodataBox").css({'display':'block'});
@@ -232,7 +178,8 @@
         });
     }
     function goDetail(applyNum){
-        window.location.href = './applyDetail.html?'+applyNum;
+        console.log(applyNum)
+        window.location.href = './applyDetail.html?applyNum='+applyNum;
     }
 
 </script>
