@@ -41,13 +41,14 @@
                     border-radius: 5px;
                 }
                 .imgInfo {
-                    background: url('./images/icon.jpg') no-repeat center center;
+                    background-position: center center;
                     background-size: cover;
                     height: 120px;
                     width: 90px;
                 }
             </style>
             <script src="./js/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="./js/commen.js" type="text/javascript" charset="utf-8"></script>
         </head>
 <body>
 <div class="applyDetail">
@@ -68,19 +69,19 @@
             <p class="shoufangInfo">到访事由 : <span class="reason"></span></p>
             <p class="shoufangInfo">到访时间 : <span class="startTime"></span></p>
             <p class="shoufangInfo">结束时间 : <span class="endTime"></span></p>
-            <p class="shoufangInfo"  id="hasCar">是否携带车辆 : <span class="licenseNum"></span></p>
-            <p class="shoufangInfo" id="noCar">是否携带车辆 : 否</p>
-            <div class='peitong' v-if="entourageList.length != 0">
-                <span>陪同人 : </span>
-                <div class="personInfo">
-                    <p v-for="item in userInfo.entourageList"></p>
+            <p class="shoufangInfo"  id="hasCar" style="display: none;">是否携带车辆 : <span class="licenseNum"></span></p>
+            <p class="shoufangInfo" id="noCar" style="display: none;">是否携带车辆 : 否</p>
+            <div id="peitong" style="display:none;">
+                <div class='peitong'>
+                    <span style="min-width: 50px;display: inline-block;">陪同人 : </span>
+                    <div class="personInfo">
+
+                    </div>
                 </div>
             </div>
             <div class='peitong flexBetween'>
-                <span v-if="userInfo.auditStatus == 1">状态 : 待审核</span>
-                <span v-if="userInfo.auditStatus == 2">状态 : 审核不通过</span>
-                <span v-if="userInfo.auditStatus == 3">状态 : 审核通过</span>
-                <div class="reApplay" v-if="userInfo.auditStatus == 2" @click="goInfo">
+                <span class="statiusText"></span>
+                <div class="reApplay" style="display: none;" onclick="goInfo()">
                     重新申请
                 </div>
             </div>
@@ -89,98 +90,10 @@
 </div>
 </body>
 <script>
-    var phone = '';
-
-    $(function(){
-        if(localStorage.getItem('phone')){
-            phone = localStorage.getItem('phone');
-        }
-        getDataDetail()
-    })
-    function getDataDetail(){
-        console.log(5555)
-        var userInfo={
-            acceptCompanyName: 'eeeee',
-            deptName: 'dddd',
-            acceptName: 'ddd',
-            acceptPhone: 'eeeee',
-            name: 'dddd',
-            cardNum: 'ddd',
-            reason: 'eeeee',
-            endTime: 'dddd',
-            startTime: 'ddd',
-            photoUrl: '',
-            carFlag: 1
-        };
-        $(".acceptCompanyName").html(userInfo.acceptCompanyName)
-        console.log( $(".acceptCompanyName").html())
-        $(".deptName").html(userInfo.deptName);
-        $(".acceptName").html(userInfo.acceptName);
-        $(".acceptPhone").html(userInfo.acceptPhone);
-        $(".name").html(userInfo.name)
-
-        $(".cardNum").html(userInfo.cardNum)
-        $(".reason").html(userInfo.reason);
-        $(".startTime").html(userInfo.startTime);
-        $(".endTime").html(userInfo.endTime);
-//        $(".imgInfo").css({"backgroundImage:"+userInfo.photoUrl});
-        if(userInfo.carFlag == 1){
-            $("#hasCar").css({'display':'block'});
-            $(".licenseNum").html(userInfo.licenseNum);
-        }
-        if(userInfo.carFlag == 2){
-            $("#noCar").css({'display':'block'});
-
-        }
-        var data = {
-            applyNum: 'tttttttt'
-        }
-        data = JSON.stringify(data);
-        $.ajax({
-            url: ajaxUrl + 'getApplyInfo',
-            timeout: 3000,
-            type: 'post',
-            contentType: 'application/json;charset=utf-8',
-            dataType: "json",
-            data:data,
-            success: function(response) {
-                if(response.rescode == 200){
-                    console.log(response)
-                    var userInfo = response.data;
-                    $(".acceptCompanyName").html(userInfo.acceptCompanyName)
-                    $(".deptName").html(userInfo.deptName);
-                    $(".acceptName").html(userInfo.acceptName);
-                    $(".acceptPhone").html(userInfo.acceptPhone);
-                    $(".name").html(userInfo.name)
-
-                    $(".cardNum").html(userInfo.cardNum)
-                    $(".reason").html(userInfo.reason);
-                    $(".startTime").html(userInfo.startTime);
-                    $(".endTime").html(userInfo.endTime);
-//                    $(".imgInfo").css({"backgroundImage:"userInfo.photoUrl});
-                    if(userInfo.carFlag == 1){
-                        $("#hasCar").css({'display':'block'});
-                        $(".licenseNum").html(userInfo.licenseNum);
-                    }
-                    if(userInfo.carFlag == 2){
-                        $("#noCar").css({'display':'block'});
-
-                    }
-//                    this.entourageList = this.userInfo.entourageList;
-                }else{
-                    tanwin(response.data.resdes)
-                }
-            },
-            error: function(XMLHttpRequest, textStatus, errorThrown) {
-            },
-            complete : function(XMLHttpRequest,status){ //请求完成后最终执行参数
-            }
-        });
-    }
+    var now = new Date().getTime();
+    document.write('<script type="text/javascript"  src="./js/applayDetail.js?t=' + now + '"><\/script\>');
 </script>
-</html></title>
-</head>
-<body>
+<script>
 
-</body>
+</script>
 </html>

@@ -46,7 +46,18 @@
         恭喜您身份认证通过，等待受访人审核中。
         您可至历史详情查看进度
     </p>
-    <div class="sureButton" @click="goHome">确定</div>
+    <div class="sureButton" onclick="goHome()">确定</div>
 </div>
+
 </body>
+<script src="./js/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="./js/commen.js" type="text/javascript" charset="utf-8"></script>
+<script>
+    $(function(){
+
+    })
+    function goHome(){
+        window.location.href = './index.html';
+    }
+</script>
 </html>

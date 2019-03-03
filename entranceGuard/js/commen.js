@@ -1,4 +1,4 @@
-var ajaxUrl = 'https://holer65239.wdom.net/general-auth-service/accessforh5/';
+var ajaxUrl = 'http://holer65239.wdom.net/general-auth-service/accessforh5/';
 function tanwin(text) {
     $("#tanwin").text(text).attr('style','');
     var clea=setInterval(function(){
