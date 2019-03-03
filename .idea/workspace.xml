@@ -3,8 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="e9a7bbae-2fb8-4e49-b360-5c5882fe06e3" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/entranceGuard/js/commen.js" afterPath="$PROJECT_DIR$/entranceGuard/js/commen.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/entranceGuard/userinfo.html" afterPath="$PROJECT_DIR$/entranceGuard/userinfo.html" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -21,7 +19,7 @@
       <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/entranceGuard/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
+            <state relative-caret-position="525">
               <caret line="21" column="9" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="65" selection-end-column="7" />
               <folding />
             </state>
@@ -31,8 +29,8 @@
       <file leaf-file-name="userinfo.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/entranceGuard/userinfo.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="493">
-              <caret line="548" column="0" lean-forward="false" selection-start-line="548" selection-start-column="0" selection-end-line="548" selection-end-column="0" />
+            <state relative-caret-position="500">
+              <caret line="629" column="5" lean-forward="true" selection-start-line="629" selection-start-column="5" selection-end-line="629" selection-end-column="5" />
               <folding>
                 <element signature="n#style#0;n#input#0;n#div#1;n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#div#0;n#div#1;n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -65,7 +63,7 @@
         <entry file="file://$PROJECT_DIR$/entranceGuard/sucess.html">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="850">
-              <caret line="34" column="32" lean-forward="true" selection-start-line="34" selection-start-column="32" selection-end-line="34" selection-end-column="32" />
+              <caret line="34" column="32" lean-forward="false" selection-start-line="34" selection-start-column="32" selection-end-line="34" selection-end-column="32" />
               <folding />
             </state>
           </provider>
@@ -75,7 +73,7 @@
         <entry file="file://$PROJECT_DIR$/entranceGuard/applayList.html">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="2525">
-              <caret line="101" column="17" lean-forward="true" selection-start-line="101" selection-start-column="17" selection-end-line="101" selection-end-column="17" />
+              <caret line="101" column="17" lean-forward="false" selection-start-line="101" selection-start-column="17" selection-end-line="101" selection-end-column="17" />
               <folding>
                 <element signature="n#style#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -88,8 +86,8 @@
       <file leaf-file-name="applyDetail.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/entranceGuard/applyDetail.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="700">
-              <caret line="112" column="22" lean-forward="true" selection-start-line="112" selection-start-column="22" selection-end-line="112" selection-end-column="22" />
+            <state relative-caret-position="2800">
+              <caret line="112" column="22" lean-forward="false" selection-start-line="112" selection-start-column="22" selection-end-line="112" selection-end-column="22" />
               <folding />
             </state>
           </provider>
@@ -109,7 +107,7 @@
         <entry file="file://$PROJECT_DIR$/entranceGuard/js/commen.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="50">
-              <caret line="2" column="29" lean-forward="true" selection-start-line="2" selection-start-column="29" selection-end-line="2" selection-end-column="29" />
+              <caret line="2" column="29" lean-forward="false" selection-start-line="2" selection-start-column="29" selection-end-line="2" selection-end-column="29" />
               <folding />
             </state>
           </provider>
@@ -303,12 +301,13 @@
       <workItem from="1550626632728" duration="658000" />
       <workItem from="1550977360182" duration="12473000" />
       <workItem from="1551021882706" duration="3835000" />
-      <workItem from="1551270232609" duration="2264000" />
+      <workItem from="1551270232609" duration="2357000" />
+      <workItem from="1551607517401" duration="1103000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="69162000" />
+    <option name="totallyTimeSpent" value="70358000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="7" />
@@ -317,12 +316,12 @@
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19166666" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32908705" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -716,14 +715,14 @@
     <entry file="file://$PROJECT_DIR$/entranceGuard/sucess.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="850">
-          <caret line="34" column="32" lean-forward="true" selection-start-line="34" selection-start-column="32" selection-end-line="34" selection-end-column="32" />
+          <caret line="34" column="32" lean-forward="false" selection-start-line="34" selection-start-column="32" selection-end-line="34" selection-end-column="32" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/entranceGuard/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
+        <state relative-caret-position="525">
           <caret line="21" column="9" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="65" selection-end-column="7" />
           <folding />
         </state>
@@ -732,7 +731,7 @@
     <entry file="file://$PROJECT_DIR$/entranceGuard/applayList.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2525">
-          <caret line="101" column="17" lean-forward="true" selection-start-line="101" selection-start-column="17" selection-end-line="101" selection-end-column="17" />
+          <caret line="101" column="17" lean-forward="false" selection-start-line="101" selection-start-column="17" selection-end-line="101" selection-end-column="17" />
           <folding>
             <element signature="n#style#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -743,8 +742,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/entranceGuard/applyDetail.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="700">
-          <caret line="112" column="22" lean-forward="true" selection-start-line="112" selection-start-column="22" selection-end-line="112" selection-end-column="22" />
+        <state relative-caret-position="2800">
+          <caret line="112" column="22" lean-forward="false" selection-start-line="112" selection-start-column="22" selection-end-line="112" selection-end-column="22" />
           <folding />
         </state>
       </provider>
@@ -770,15 +769,15 @@
     <entry file="file://$PROJECT_DIR$/entranceGuard/js/commen.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="50">
-          <caret line="2" column="29" lean-forward="true" selection-start-line="2" selection-start-column="29" selection-end-line="2" selection-end-column="29" />
+          <caret line="2" column="29" lean-forward="false" selection-start-line="2" selection-start-column="29" selection-end-line="2" selection-end-column="29" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/entranceGuard/userinfo.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="493">
-          <caret line="548" column="0" lean-forward="false" selection-start-line="548" selection-start-column="0" selection-end-line="548" selection-end-column="0" />
+        <state relative-caret-position="500">
+          <caret line="629" column="5" lean-forward="true" selection-start-line="629" selection-start-column="5" selection-end-line="629" selection-end-column="5" />
           <folding>
             <element signature="n#style#0;n#input#0;n#div#1;n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#0;n#div#1;n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
