@@ -99,8 +99,6 @@ function choosekey(obj,jj){
 
     }
 
-
-
 }
 function closePro(){
     layer.closeAll()
@@ -332,13 +330,16 @@ carId = '',
             }
 
             var carNUm = $(".car_input").attr("data-pai");
-            if(carNUm){
+            console.log(next,carNUm)
+            if(carNUm && next == 6){
                     $(".carTable").css({'display':"block"})
                     carId = '';
                     cleanPro();
                     layer.closeAll();
                     var str = '<tr><td>'+carNUm+'</td><td data-id="'+carNUm+'" ontouchend="deletePerson(this)"><a>删除</a></td></tr>'
                     $(".carTableBox").append($(str)).change();
+                $(".car_input").attr("data-pai",'');
+                next = 0;
 
             }else{
                 tanwin(" 请输入正确的车牌号");
