@@ -1,4 +1,4 @@
-var phone = '';
+var phone = '17666143833';
 $(function(){
     if(localStorage.getItem('phone')){
         phone = localStorage.getItem('phone');

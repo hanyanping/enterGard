@@ -2,16 +2,150 @@ var calendar = new LCalendar();
 calendar.init({
     'trigger': '#start_date', //标签id
     'type': 'date', //date 调出日期选择 datetime 调出日期时间选择 time 调出时间选择 ym 调出年月选择,
-    'minDate': (new Date().getFullYear()) + '-' + 1 + '-' + 1, //最小日期
+    'minDate':  (new Date().getFullYear()) + '-' + (new Date().getMonth()+1)+ '-' +(new Date().getDate()), //最小日期
     // 'maxDate': (new Date().getFullYear()+3) + '-' + 12 + '-' + 31 //最大日期
 });
 var calendar = new LCalendar();
 calendar.init({
     'trigger': '#end_date', //标签id
     'type': 'date', //date 调出日期选择 datetime 调出日期时间选择 time 调出时间选择 ym 调出年月选择,
-    'minDate': (new Date().getFullYear()-3) + '-' + 1 + '-' + 1, //最小日期
-    'maxDate': (new Date().getFullYear()+3) + '-' + 12 + '-' + 31 //最大日期
+    'minDate': (new Date().getFullYear()) + '-' + (new Date().getMonth()+1)+ '-' +(new Date().getDate()), //最小日期
+    // 'maxDate':  (new Date().getFullYear()) + '-' + (new Date().getMonth()+1)+ '-' +(new Date().getDate()), //最小日期
 });
+var provinces = new Array("京","沪","浙","苏","粤","鲁","晋","冀",
+    "豫","川","渝","辽","吉","黑","皖","鄂",
+    "津","贵","云","桂","琼","青","新","藏",
+    "蒙","宁","甘","陕","闽","赣","湘");
+
+var keyNums = new Array("0","1","2","3","4","5","6","7","8","9",
+    "Q","W","E","R","T","Y","U","I","O","P",
+    "A","S","D","F","G","H","J","K","L",
+    "OK","Z","X","C","V","B","N","M","Del");
+var next=0;
+function showProvince(){
+    $("#pro").html("");
+    var ss="";
+    for(var i=0;i<provinces.length;i++){
+        ss=ss+addKeyProvince(i)
+    }
+    $("#pro").html("<ul class='clearfix ul_pro'>"+ss+"<li class='li_close' onclick='closePro();'><span>关闭</span></li><li class='li_clean' onclick='cleanPro();'><span>清空</span></li></ul>");
+}
+function showKeybord(){
+    $("#pro").html("");
+    var sss="";
+    for(var i=0;i<keyNums.length;i++){
+        sss=sss+'<li class="ikey ikey'+i+' '+(i>9?"li_zm":"li_num")+' '+(i>28?"li_w":"")+'" ><span onclick="choosekey(this,'+i+');">'+keyNums[i]+'</span></li>'
+    }
+    $("#pro").html("<ul class='clearfix ul_keybord'>"+sss+"</ul>");
+}
+function addKeyProvince(provinceIds){
+    var addHtml = '<li>';
+    addHtml += '<span onclick="chooseProvince(this);">'+provinces[provinceIds]+'</span>';
+    addHtml += '</li>';
+    return addHtml;
+}
+
+function chooseProvince(obj){
+    $(".input_pro span").text($(obj).text());
+    $(".input_pro").addClass("hasPro");
+    $(".input_pp").find("span").text("");
+    $(".ppHas").removeClass("ppHas");
+    next=0;
+    showKeybord();
+}
+
+
+function choosekey(obj,jj){
+    if(jj==29){
+        alert("车牌："+$(".car_input").attr("data-pai"));
+        layer.closeAll();
+    }else if(jj==37){
+        if($(".ppHas").length==0){
+            $(".hasPro").find("span").text("");
+            $(".hasPro").removeClass("hasPro");
+            showProvince();
+            next=0;
+        }
+        $(".ppHas:last").find("span").text("");
+        $(".ppHas:last").removeClass("ppHas");
+        next=next-1;
+        if(next<1){
+            next=0;
+        }
+        console.log(next);
+    }else{
+        if(next>5){
+            return
+        }
+        console.log(next);
+        for(var i = 0; i<$(".input_pp").length;i++){
+            if(next==0 & jj<10 & $(".input_pp:eq("+next+")").hasClass("input_zim")){
+                layer.open({
+                    content: '车牌第二位为字母',
+                    skin: 'msg',
+                    time: 1
+                });
+                return
+            }
+            $(".input_pp:eq("+next+")").find("span").text($(obj).text());
+            $(".input_pp:eq("+next+")").addClass("ppHas");
+            next=next+1;
+            if(next>5){
+                next=6;
+            }
+            getpai();
+            return
+        }
+
+    }
+
+
+
+}
+function closePro(){
+    layer.closeAll()
+}
+function cleanPro(){
+    $(".ul_input").find("span").text("");
+    $(".hasPro").removeClass("hasPro");
+    $(".ppHas").removeClass("ppHas");
+    next=0;
+}
+function trimStr(str){return str.replace(/(^\s*)|(\s*$)/g,"");}
+function getpai(){
+    var pai=trimStr($(".car_input").text());
+    $(".car_input").attr("data-pai",pai);
+}
+window.onload = function() {
+
+    $(".input_pro").click(function(){
+        layer.open({
+            type: 1
+            ,content: '<div id="pro"></div>'
+            ,anim: 'up'
+            ,shade :false
+            ,style: 'position:fixed; bottom:0; left:0; width: 100%; height: auto; padding:0; border:none;'
+        });
+        showProvince()
+    })
+    $(".input_pp").click(function(){
+        if($(".input_pro").hasClass("hasPro")){ // 如果已选择省份
+            layer.open({
+                type: 1
+                ,content: '<div id="pro"></div>'
+                ,anim: 'up'
+                ,shade :false
+                ,style: 'position:fixed; bottom:0; left:0; width: 100%; height: auto; padding:0; border:none;'
+            });
+            showKeybord()
+        }else{
+            $(".input_pro").click()
+        }
+    })
+
+
+}
+
 $(function() {
     $('#start_date').bind("input", function () {
         if($('#end_date').val()){
@@ -36,7 +170,7 @@ $(function() {
     })
 });
 
-var phone = '17666143833',
+var phone = '',
     userinfo = {
         company: '',
         department: '',
@@ -56,7 +190,7 @@ var phone = '17666143833',
     companyList = [],
     deptList = [],
     acceptNameList = [],
-    isSelect = true,
+    isSelect = false,
     isSelectOne= false,
     provinceData = ['京','津','沪','渝','冀','晋','辽','吉','黑','苏','浙','皖','闽','赣','鲁','豫','鄂','湘','粤','琼','川','贵','云','陕','甘','青','藏','桂','蒙','宁','新','使','WJ'],
     numData = ['1','2','3','4','5','6','7','8','9','0','A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','R','U','V','W','X','Y','Z','学','警','领','港','澳','试','挂','临']
@@ -122,15 +256,42 @@ carId = '',
                 tanwin('请输入正确身份证号')
             }
         })
-        $("#input1").attr("checked","checked");//默认第一个选中
+        // $("#input1").attr("checked","checked");//默认第一个选中
         $('input:radio[name="radio1"]').change(function () {
             if($("#input1").is(":checked")){
                 isSelect = true;
                 $("#carSpan").css({"display":"block"})
+                $("#carSpan1").css({"display":"flex"})
+                if($("#carBox").find('tr').length>0){
+                    $(".carTable ").css({'display':'block'});
+                }else{
+                    $(".carTable ").css({'display':'none'});
+                }
             }
             if($("#input2").is(":checked")){
+                $('#carCode').css({'display':'none'});
+                $(".carTable ").css({'display':'none'});
                 isSelect = false;
-                $("#carSpan").css({"display":"none"})
+                $("#carSpan").css({"display":"none"});
+                $("#carSpan1").css({"display":"none"})
+            }
+        })
+        $('input:radio[name="radio3"]').change(function () {
+            if($("#input3").is(":checked")){
+                isSelectOne = true;
+                $("#peitong").css({"display":"flex"});
+                $('#peitongone').css({'display':'flex'});
+                if($("#personBox").find('tr').length>0){
+                    $(".personTable ").css({'display':'block'});
+                }else{
+                    $(".personTable ").css({'display':'none'});
+                }
+            }
+            if($("#input4").is(":checked")){
+                $('#peitong').css({'display':'none'});
+                $('#peitongone').css({'display':'none'});
+                $(".personTable ").css({'display':'none'});
+                isSelectOne = false;
             }
         })
 
@@ -169,19 +330,18 @@ carId = '',
                 tanwin(" 车辆最多可添加5辆");
                 return;
             }
-            var carNUm = $(".showCarText").text();
-            if(carNUm != '请输入车牌号'){
-                if (carNUm.length == 7 || carNUm.length == 8){
+
+            var carNUm = $(".car_input").attr("data-pai");
+            if(carNUm){
                     $(".carTable").css({'display':"block"})
                     carId = '';
-                    $(".showCarText").text('请输入车牌号');
-                    var str = '<tr><td>'+carNUm+'</td><td data-id="'+carNUm+'" ontouchend="deletePerson(this)">删除</td></tr>'
+                    cleanPro();
+                    layer.closeAll();
+                    var str = '<tr><td>'+carNUm+'</td><td data-id="'+carNUm+'" ontouchend="deletePerson(this)"><a>删除</a></td></tr>'
                     $(".carTableBox").append($(str)).change();
-                }else{
-                    tanwin(" 请输入正确车牌号");
-                }
+
             }else{
-                tanwin(" 请输入车牌号");
+                tanwin(" 请输入正确的车牌号");
             }
         })
     })
@@ -273,7 +433,7 @@ function addPerson(){
         return;
     }
     var str='';
-    str+='<tr> <td>'+companyName+'</td><td>'+companyCard+'</td><td ontouchend="deletePerson(this)"">删除</td></tr>';
+    str+='<tr> <td>'+companyName+'</td><td>'+companyCard+'</td><td ontouchend="deletePerson(this)""><a>删除</a></td></tr>';
     $("#personName").val('');
     $("#personIdnum").val('')
     $("#personBox").append($(str))

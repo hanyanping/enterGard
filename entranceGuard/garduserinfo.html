@@ -14,12 +14,38 @@
             padding: 8px;
             border-radius: 5px;
         }
+        .selctOwn{
+            position: relative;
+        }
         input[type="radio"] {
-            width: 22px;
-            height: 22px;
-            opacity: 1;
+            position: absolute;
+            /*clip: rect(0, 0, 0, 0);*/
+            opacity: 0;
+            width: 24px;
+            height: 24px;
+            top: 7px;
          }
-
+        input[type="radio"] + label::before {
+            content: "\a0"; /*不换行空格*/
+            display: inline-block;
+            vertical-align: middle;
+            font-size: 18px;
+            width: 20px;
+            height: 20px;
+            margin-right: 4px;
+            border-radius: 50%;
+            border: 1px solid #0076FF;
+            text-indent: 2px;
+            line-height: 1;
+            margin-top: -5px;
+        }
+        input[type="radio"]:checked + label::before {
+            background-color: #0076FF;
+            background-clip: content-box;
+            padding: 5px;
+            width: 10px;
+            height: 10px;
+        }
         .radioTwo,.radioOne{
             position: absolute;
             left: 5px;
@@ -86,13 +112,13 @@
             text-indent: 4px;
             text-align: right;
         }
-        .addInfo{
-            padding: 8px 12px;
-            color: #fff;
-            background: #0076FF;
-            border-radius: 5px;
-            font-size: 12px;
-        }
+        /*.addInfo{*/
+            /*padding: 8px 12px;*/
+            /*color: #fff;*/
+            /*background: #0076FF;*/
+            /*border-radius: 5px;*/
+            /*font-size: 12px;*/
+        /*}*/
         #carSpan .deletIcon{
             color:#fff;
             font-size:16px;
@@ -104,8 +130,12 @@
             text-align: center;
             line-height: 16px;
         }
-        #carSpan .addInfo{
-            padding: 8px 12px;
+       .addInfo{
+            display: inline-block;
+            height: 35px;
+            width: 60px;
+            text-align: center;
+            line-height: 35px;
             color: #fff;
             background: #0076FF;
             border-radius: 5px;
@@ -119,6 +149,7 @@
             left: 10px;
             width:calc(100% - 40px);
             margin: 0 10px 10px;
+            z-index:100;
         }
         .carcodeBox a{
             color: #232323;
@@ -160,8 +191,8 @@
             line-height: 40px;
             text-align: center;
             color: #fff;
-        }
 
+        }
         #wrap .carBox {
             display:none;
         }
@@ -175,13 +206,17 @@
             color:#0076FF;
         }
         .carTableBox tr td{
-            border: 1px solid #bbb;
+            /*border: 1px solid #bbb;*/
             padding: 2px 10px;
             text-align: center;
         }
         .carTableBox tr td:nth-last-child(1){
             color: #f00;
             cursor: pointer;
+        }
+        .carTableBox tr td:nth-last-child(1) a{
+           text-decoration: #f00 ;
+           text-decoration-line: underline;
         }
         .carBox {
             width: 100%;
@@ -192,7 +227,7 @@
             cursor: pointer;
         }
        .carBox tr td{
-            border: 1px solid #bbb;
+            /*border: 1px solid #bbb;*/
             padding: 2px 10px;
             text-align: center;
         }
@@ -209,7 +244,7 @@
             width: 160px;
             height: 45px;
             line-height: 45px;
-
+            font-size: 12px;
         }
         .zhegaiceng {
             height: 100vh;
@@ -226,6 +261,30 @@
             right: 0;
             margin: 30vh auto;
         }
+        .ul_pro{ background-color:#CED3D9; text-align:center; padding:4px 2px; font-size:14px;}
+        .ul_pro li{ float:left; width:11.11%; padding:2px;box-sizing: border-box;}
+        .ul_pro .li_close{  float:right; width:22.22%;}
+        .ul_pro .li_close span{ background-color:#ACB3BB;}
+        .ul_pro .li_clean{  float:right; width:22.22%;}
+        .ul_pro li span{ display:block; background-color:#fff; border-radius:4px; box-shadow: 2px 2px 2px #888888; /* max-width:48px; margin:0 auto; */ line-height:32px; padding-top:2px;  }
+        .ul_pro li span:active{ background-color:#4DA9F2; color:#fff;}
+
+        .ul_input{ margin:0 auto; }
+        .ul_input li{ float:left; padding:2px;text-align:center;width:12%; }
+        .ul_input li span{ display:block; background-color:#fff; border:1px solid #ccc; border-radius:4px; width:30px; margin:0 auto; height:30px; line-height:30px; }
+
+
+
+        .ul_keybord{ background-color:#CED3D9; text-align:center; padding:4px 2px; font-size:14px;}
+        .ul_keybord li{ float:left; width:10%; padding:2px;box-sizing: border-box;}
+        .ul_keybord .ikey20{ margin-left:5%;}
+        .ul_keybord .li_w{ width:11.11%; }
+
+        .ul_keybord .li_close{  float:right; width:22.22%;}
+        .ul_keybord .li_close span{ background-color:#ACB3BB;}
+        .ul_keybord .li_clean{  float:right; width:22.22%;}
+        .ul_keybord li span{ display:block; background-color:#fff; border-radius:4px; box-shadow: 2px 2px 2px #888888; /* max-width:48px; margin:0 auto; */ line-height:32px; padding-top:2px;  }
+        .ul_keybord li span:active{ background-color:#4DA9F2; color:#fff;}
     </style>
 </head>
 <body style="">
@@ -314,13 +373,13 @@
                 <!--<img class='yuanImg' onclick='select(this)' src='./images/selectyuan.png'>-->
                 <!--<img class='yuanImg' onclick='select(this)'  src='./images/yuan.png'>-->
                 <input name="radio1" type="radio" id="input1">
-                <span class='yuanText'>是</span>
+                <label  class='yuanText'>是</label>
             </div>
             <div class='selctOwn'>
                 <!--<img class='yuanImg ' onclick='selectOne' src='./images/selectyuan.png'>-->
                 <!--<img class='yuanImg' onclick='selectOne' src='./images/yuan.png'>-->
-                <input name="radio1" type="radio" id="input2">
-                <span class='yuanText'>否</span>
+                <input name="radio1" type="radio" checked  id="input2">
+                <label  class='yuanText'>否</label >
             </div>
         </div>
     </div>
@@ -332,13 +391,21 @@
             </table>
         </div>
     </div>
-    <div class="infoBox"  id="carSpan">
-        <div class="inputLeft"></div>
-        <div style="min-width: 70%;margin-left: 28%;">
-            <span class='inputText showCarText'  style="text-align: left;display:inline-block;min-width: 62%;" ontouchend="$('#carCode').css({'display':'block'})">请输入车牌号</span>
-            <span class="deletIcon" ontouchend="$('.showCarText').html('请输入车牌号');carId = ''">x</span>
-            <span class="addInfo addCarInfo">添加</span>
-        </div>
+    <!--<div class="infoBox"  id="carSpan" style="display: none;">-->
+        <!--<div class="inputLeft"></div>-->
+        <!--<div style="min-width: 70%;margin-left: 28%;">-->
+            <!--<span class='inputText showCarText'  style="text-align: left;display:inline-block;min-width: 62%;" ontouchend="$('#carCode').css({'display':'block'})">请输入车牌号</span>-->
+            <!--<span class="deletIcon" ontouchend="$('.showCarText').html('请输入车牌号');carId = ''">x</span>-->
+            <!--<span class="addInfo addCarInfo">添加</span>-->
+        <!--</div>-->
+    <!--</div>-->
+
+    <div class="infoBox flexBetween"  id="carSpan1" style="display: none;border: none;line-height: 35px;">
+        <div class="inputLeft">请输入车牌号</div>
+       <span class="addInfo addCarInfo">添加</span>
+    </div>
+    <div class="car_input infoBox flex" id="carSpan" style="display: none;">
+        <ul class="clear ul_input"><li class="input_pro"><span></span></li><li class="input_pp input_zim"><span></span></li><li class="input_pp"><span></span></li><li class="input_pp"><span></span></li><li class="input_pp"><span></span></li><li class="input_pp"><span></span></li><li class="input_pp"><span></span></li></ul>
     </div>
     <div class="infoBox" id='carCode' style="position: relative;border:none;padding: 0;display: none;">
         <div class="carcodeBox">
@@ -360,13 +427,30 @@
     </div>
     <div class="infoBox flexBetween">
         <div class="inputLeft">
+            <span class="lableTextIcon">*</span>
+            <span class="lableText">是否有陪同人 :</span>
+        </div>
+        <div class="flexAround inputbox ">
+            <div class='selctOwn'>
+                <input name="radio3" type="radio" id="input3">
+                <label  class='yuanText'>是</label>
+            </div>
+            <div class='selctOwn'>
+                <input name="radio3" checked  type="radio" id="input4">
+                <label  class='yuanText'>否</label >
+            </div>
+        </div>
+    </div>
+
+    <div class="infoBox flexBetween" id="peitong" style="display: none;">
+        <div class="inputLeft">
             陪同人信息 :</div>
         <div style="min-width: 70%;text-align: left;">
             <input class='inputText' style="text-align: left;" id="personName" type="text" placeholder="请输入陪同人姓名">
             <!--<span class="addInfo"></span>-->
         </div>
     </div>
-    <div class="infoBox flexBetween">
+    <div class="infoBox flexBetween" id="peitongone" style="display: none;">
         <div class="inputLeft"></div>
         <div style="min-width: 70%;">
             <input class='inputText' style="text-align: left" type="text" id='personIdnum' placeholder="请输入陪同人身份证号">
@@ -382,13 +466,14 @@
         </div>
     </div>
 
-    <div class="submitInfo" ontouchend="submit()">提交并进行活体检测</div>
+    <div class="submitInfo" ontouchend="submit()">提交并进行人脸识别</div>
 </div>
 <div class="zhegaicengone zhegaiceng" style="display: none;">
     <img class='lodingimg' src="./images/loadingpop.gif">
 </div>
 <div id="tanwin" class="tan" style="display:none;"></div>
 </body>
+<script src="layer_mobile/layer.js" type="text/javascript"></script>
 <script src="./js/jquery.min.js" type="text/javascript" charset="utf-8"></script>
 <script src="LCalendar/js/LCalendar.js" type="text/javascript" charset="utf-8"></script>
 <script src="./js/commen.js" type="text/javascript" charset="utf-8"></script>

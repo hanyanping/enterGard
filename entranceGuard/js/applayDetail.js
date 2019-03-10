@@ -16,7 +16,7 @@ function getQueryString(name) {
     return null;
 }
 function goInfo(){
-    window.location.href='./userinfo.html'
+    window.location.href='./garduserinfo.html'
 }
 function getDataDetail(applyNum){
     var data = {
@@ -35,6 +35,7 @@ function getDataDetail(applyNum){
                 console.log(response)
                 var userInfo = response;
                 $(".acceptCompanyName").html(userInfo.acceptCompanyName)
+                $(".companyName").html(userInfo.companyName)
                 $(".deptName").html(userInfo.deptName);
                 $(".acceptName").html(userInfo.acceptName);
                 $(".acceptPhone").html(userInfo.acceptPhone);

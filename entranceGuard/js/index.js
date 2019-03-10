@@ -8,7 +8,7 @@ window.onload = function() {
 }
 $(function(){
     var  listdata = [
-        {'name':'预约申请',icon:'./images/shenqing.png',router: './userinfo.html'},
+        {'name':'预约申请',icon:'./images/shenqing.png',router: './garduserinfo.html'},
         {'name':'历史申请记录',icon:'./images/liebiao.png',router: './applayList.html'}];
     var str = '';
     for(let item of listdata){
